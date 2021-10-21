@@ -34,6 +34,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   font_awesome_flutter: ^9.0.0
+  flutter_native_splash: ^1.2.4
 
 dev_dependencies:
   flutter_test:
@@ -88,9 +89,9 @@ flutter:
     - family: Rubik
       fonts:
         - asset: fonts/Rubik-Regular.ttf
-    - family: Rampart
+    - family: Hammersmith
       fonts:
-        - asset: fonts/RampartOne-Regular.ttf
+        - asset: fonts/HammersmithOne-Regular.ttf
 # To add assets to your application, add an assets section, like this:
 # assets:
 #   - images/a_dot_burr.jpeg
