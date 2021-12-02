@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "805716411714",
+    "project_id": "dinomapa-b70e4",
+    "storage_bucket": "dinomapa-b70e4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:805716411714:android:1dd4df9b6109789eee34db",
+        "android_client_info": {
+          "package_name": "com.example.dino_mapa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "805716411714-ejnvjkadi2btcasseceqfhrdvbh225rl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.dino_mapa",
+            "certificate_hash": "2500b3b2ef499c34b10d736b5d1110c3a91d2e37"
+          }
+        },
+        {
+          "client_id": "805716411714-uc4u4cpglcftrnqaj839jpsdaohvh7au.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAiJlwCWCis2RaeWHUuvauWvrjKaaroLPY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "805716411714-uc4u4cpglcftrnqaj839jpsdaohvh7au.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
