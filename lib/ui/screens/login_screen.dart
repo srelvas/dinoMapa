@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dino_mapa/models/user.dart';
@@ -7,18 +7,17 @@ import 'package:dino_mapa/ui/screens/registration_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
+  final GoogleSignIn _googleSignIn = GoogleSignIn(scopes: ['email']);
 
   final _formKey = GlobalKey<FormState>();
 
@@ -30,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
-    GoogleSignInAccount? user = _googleSignIn.currentUser;
+    //GoogleSignInAccount? user = _googleSignIn.currentUser;
 
     final emailField = TextFormField(
         cursorColor: Theme.of(context).colorScheme.primary,
@@ -139,102 +138,102 @@ class _LoginScreenState extends State<LoginScreen> {
 
     return SafeArea(
       child: Scaffold(
-        body: SingleChildScrollView(
-          child: Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                colors: const [
-                  Color(0xFFfe8c00),
-                  Color(0xFFf83600),
-                ],
-              ),
-            ),
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 20, right: 180),
-                  child: Image.asset('assets/images/logopreto.png', width: 170),
+          body: SingleChildScrollView(
+            child: Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              decoration: BoxDecoration(
+                gradient: LinearGradient(
+                  colors: const [
+                    Color(0xFFfe8c00),
+                    Color(0xFFf83600),
+                  ],
                 ),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    SizedBox(height: 70),
-                    SizedBox(
-                      height: 32,
-                      child: Text(
-                        "Bem vindo de volta!",
-                        style: TextStyle(letterSpacing: -0.2, color: Color(0xCC000000), fontSize: 29),
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20, right: 180),
+                    child: Image.asset('assets/images/logopreto.png', width: 170),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      SizedBox(height: 70),
+                      SizedBox(
+                        height: 32,
+                        child: Text(
+                          "Bem vindo de volta!",
+                          style: TextStyle(letterSpacing: -0.2, color: Color(0xCC000000), fontSize: 29),
+                        ),
                       ),
-                    ),
-                    Text(
-                      "Entra na tua conta do Dino Mapa",
-                      style: TextStyle(letterSpacing: -0.4, color: Color(0x90000000), fontSize: 14),
-                    ),
-                    SizedBox(height: 65),
-                    Container(
-                      height: 400,
-                      width: 310,
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xFFDFE2F4),
-                            spreadRadius: 1,
-                            blurRadius: 0.2,
-                            offset: Offset(0, 0),
-                          ),
-                        ],
-                        color: Color(0xFFE6E8F2),
-                        borderRadius: BorderRadius.circular(10),
+                      Text(
+                        "Entra na tua conta do Dino Mapa",
+                        style: TextStyle(letterSpacing: -0.4, color: Color(0x90000000), fontSize: 14),
                       ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 25, right: 25),
-                        child: Form(
-                          key: _formKey,
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              emailField,
-                              SizedBox(height: 15),
-                              passwordField,
-                              SizedBox(height: 20),
-                              loginButton,
-                              SizedBox(height: 15),
-                              Text(
-                                "ou",
-                                style: TextStyle(color: Colors.black, fontSize: 15),
-                              ),
-                              SizedBox(height: 15),
-                              loginGoogle,
-                              SizedBox(height: 15),
-                              Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+                      SizedBox(height: 65),
+                      Container(
+                        height: 400,
+                        width: 310,
+                        decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFFDFE2F4),
+                              spreadRadius: 1,
+                              blurRadius: 0.2,
+                              offset: Offset(0, 0),
+                            ),
+                          ],
+                          color: Color(0xFFE6E8F2),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 25, right: 25),
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: <Widget>[
+                                emailField,
+                                SizedBox(height: 15),
+                                passwordField,
+                                SizedBox(height: 20),
+                                loginButton,
+                                SizedBox(height: 15),
                                 Text(
-                                  "Ainda não tens conta? ",
-                                  style: TextStyle(color: Color(0xFF47525E), fontSize: 12),
+                                  "ou",
+                                  style: TextStyle(color: Colors.black, fontSize: 15),
                                 ),
-                                GestureDetector(
-                                  onTap: () {
-                                    Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationScreen()));
-                                  },
-                                  child: Text(
-                                    "Regista-te!",
-                                    style: TextStyle(color: Color(0xFF0079FF), fontWeight: FontWeight.bold, fontSize: 12),
+                                SizedBox(height: 15),
+                                loginGoogle,
+                                SizedBox(height: 15),
+                                Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
+                                  Text(
+                                    "Ainda não tens conta? ",
+                                    style: TextStyle(color: Color(0xFF47525E), fontSize: 12),
                                   ),
-                                )
-                              ])
-                            ],
+                                  GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => RegistrationScreen()));
+                                    },
+                                    child: Text(
+                                      "Regista-te!",
+                                      style: TextStyle(color: Color(0xFF0079FF), fontWeight: FontWeight.bold, fontSize: 12),
+                                    ),
+                                  )
+                                ])
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
       ),
     );
   }

@@ -1,5 +1,4 @@
 import 'package:dino_mapa/ui/screens/dino_mapa.dart';
-import 'package:dino_mapa/ui/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -10,7 +9,7 @@ Future<void> main() async {
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: DinoMapa("teste"), //TODO: MUDAR PA LOGIN
       theme: ThemeData(
         iconTheme: const IconThemeData(
           color: Color(0XFFF75701),

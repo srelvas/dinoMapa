@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors, prefer_final_fields, invalid_required_positional_param
+
 import 'package:dino_mapa/ui/screens/login_screen.dart';
 import 'package:dino_mapa/ui/screens/name_initials_avatar.dart';
 import 'package:flutter/material.dart';
@@ -5,7 +7,7 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class Menu extends StatefulWidget {
   final String email;
-  Menu(@required this.email, {Key? key}) : super(key: key);
+  const Menu(@required this.email, {Key? key}) : super(key: key);
 
   @override
   _MenuState createState() => _MenuState();
