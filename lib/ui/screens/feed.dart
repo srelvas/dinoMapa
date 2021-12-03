@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class Noticias extends StatefulWidget {
@@ -11,6 +10,6 @@ class Noticias extends StatefulWidget {
 class _NoticiasState extends State<Noticias> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Center(child: Text("NOTICIAS", style: TextStyle(color: Colors.blue, fontSize: 30)));
   }
 }

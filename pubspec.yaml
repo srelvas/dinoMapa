@@ -41,6 +41,7 @@ dependencies:
     rflutter_alert: ^2.0.4
     fluttertoast: ^8.0.8
     google_sign_in: ^5.2.1
+    syncfusion_flutter_maps: ^19.3.56-beta
 
 dev_dependencies:
     flutter_test:
@@ -77,6 +78,9 @@ flutter:
     # list giving the asset and other descriptors for the font. For
     # example:
     fonts:
+        - family: MyFlutterApp
+          fonts:
+              - asset: fonts/MyFlutterApp.ttf
         - family: SourceSansPro-SemiBold
           fonts:
               - asset: fonts/SourceSansPro-SemiBold.ttf
