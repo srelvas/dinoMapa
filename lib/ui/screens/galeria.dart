@@ -41,30 +41,23 @@ class _GaleriaState extends State<Galeria> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(top: 15, left: 220),
+            child: Text(
+              "Dino Galeria",
+              style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
+            ),
+          ),
+          SizedBox(width: 22),
+        ],
+      ),
       backgroundColor: Color(0xFFF2F3F8),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              height: 60,
-              width: MediaQuery.of(context).size.width,
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(10),
-                  bottomRight: Radius.circular(10),
-                ),
-              ),
-              child: Padding(
-                padding: EdgeInsets.only(top: 15, left: 220),
-                child: Text(
-                  "Dino Galeria",
-                  style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
-                ), // talvez bold? idk
-              ),
-            ),
-            // TODO: SEARCH BAR
-            SizedBox(height: 20),
+            SizedBox(height: 15),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [

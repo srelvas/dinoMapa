@@ -42,6 +42,7 @@ dependencies:
     fluttertoast: ^8.0.8
     google_sign_in: ^5.2.1
     syncfusion_flutter_maps: ^19.3.56-beta
+    animations: ^2.0.2
 
 dev_dependencies:
     flutter_test:

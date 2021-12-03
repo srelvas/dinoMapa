@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, prefer_const_constructors_in_immutables, invalid_required_positional_param
 
+import 'package:animations/animations.dart';
 import 'package:dino_mapa/ui/screens/favoritos.dart';
 import 'package:dino_mapa/ui/screens/feed.dart';
 import 'package:dino_mapa/ui/screens/galeria.dart';
@@ -32,8 +33,11 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: IndexedStack(
-            index: _currentIndex, children: _pages), // para manter o estado, qql coisa tirar e meter apenas body: _pages[_currentIndex],
+        body: PageTransitionSwitcher(
+            child: IndexedStack(index: _currentIndex, children: _pages),
+            // IndexedStack(index: _currentIndex, children: _pages), // para manter o estado, qql coisa tirar e meter apenas body: _pages[_currentIndex],
+            transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
+                FadeThroughTransition(animation: primaryAnimation, secondaryAnimation: secondaryAnimation, child: child)),
         bottomNavigationBar: BottomNavigationBar(
           selectedFontSize: 13.0,
           type: BottomNavigationBarType.fixed,
@@ -52,7 +56,7 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
               label: "Favoritos",
               icon: Icon(
-                MyFlutterApp.star_2,
+                MyFlutterApp.star_2, size:34,
               ),
             ),
             BottomNavigationBarItem(
@@ -76,7 +80,7 @@ class _HomeState extends State<Home> {
             BottomNavigationBarItem(
               label: "Museus",
               icon: Icon(
-                MyFlutterApp.museu,
+                MyFlutterApp.museu,size:34,
               ),
             ),
           ],

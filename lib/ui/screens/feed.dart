@@ -10,6 +10,7 @@ class Noticias extends StatefulWidget {
 class _NoticiasState extends State<Noticias> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("NOTICIAS", style: TextStyle(color: Colors.blue, fontSize: 30)));
+    return const Scaffold(
+      backgroundColor: Color(0xFFF2F3F8),body: Center(child: Text("NOTICIAS", style: TextStyle(color: Colors.blue, fontSize: 30),),),);
   }
 }

@@ -10,6 +10,7 @@ class Museus extends StatefulWidget {
 class _MuseusState extends State<Museus> {
   @override
   Widget build(BuildContext context) {
-    return Center(child: Text("MUSEUS", style: TextStyle(color: Colors.green, fontSize: 30)));
+    return const Scaffold(
+      backgroundColor: Color(0xFFF2F3F8), body: Center(child: Text("MUSEUS", style: TextStyle(color: Colors.green, fontSize: 30),),),);
   }
 }
