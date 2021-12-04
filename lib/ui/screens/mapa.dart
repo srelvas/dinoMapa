@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, prefer_const_constructors_in_immutables, invalid_required_positional_param
 
-import 'package:dino_mapa/ui/screens/my_flutter_app_icons.dart';
 import 'package:dino_mapa/ui/widgets/menu.dart';
 import 'package:flutter/material.dart';
 
@@ -19,7 +18,7 @@ class _MapaState extends State<Mapa> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-          backgroundColor: Color(0xFFF2F3F8),
+            backgroundColor: Color(0xFFF2F3F8),
             appBar: AppBar(
               actions: [
                 Padding(
@@ -39,9 +38,15 @@ class _MapaState extends State<Mapa> {
             key: _key,
             drawer: Menu(widget.email),
             body: Column(
-                children: [
-                  Center(heightFactor: 14.3, child: Text("MAPA", style: TextStyle(color: Colors.orange, fontSize: 30),),)
-                ],
+              children: [
+                Center(
+                  heightFactor: 14.3,
+                  child: Text(
+                    "MAPA",
+                    style: TextStyle(color: Colors.orange, fontSize: 30),
+                  ),
+                )
+              ],
             )));
   }
 }

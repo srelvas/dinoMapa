@@ -43,6 +43,25 @@ dependencies:
     google_sign_in: ^5.2.1
     syncfusion_flutter_maps: ^19.3.56-beta
     animations: ^2.0.2
+    url_launcher: ^6.0.17
+    path_provider: ^2.0.7
+    path_provider_macos: ^2.0.4
+    desktop_window: 0.4.0
+    provider: ^6.0.1
+    intl: ^0.17.0
+
+    syncfusion_flutter_datagrid_export: ^19.3.43-beta
+    syncfusion_flutter_calendar: ^19.3.43
+    syncfusion_flutter_datepicker: ^19.3.43
+    syncfusion_flutter_charts: ^19.3.43
+    syncfusion_flutter_gauges: ^19.3.43
+    syncfusion_flutter_sliders: ^19.3.43
+    syncfusion_flutter_pdf: ^19.3.43-beta
+    syncfusion_flutter_barcodes: ^19.3.43
+    syncfusion_officechart: ^19.3.43-beta
+    syncfusion_flutter_signaturepad: ^19.3.43-beta
+    syncfusion_flutter_pdfviewer: ^19.3.43-beta
+    syncfusion_flutter_treemap: ^19.3.43-beta
 
 dev_dependencies:
     flutter_test:

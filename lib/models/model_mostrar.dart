@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
-@immutable
 class NoticiaModel {
-  const NoticiaModel({
+  NoticiaModel({
     required this.titulo,
     required this.imagem,
     required this.subtitulo,
@@ -10,6 +9,7 @@ class NoticiaModel {
     required this.texto,
     required this.visivel,
     required this.cor,
+    required this.favorito,
   });
 
   final String titulo;
@@ -19,4 +19,9 @@ class NoticiaModel {
   final String texto;
   final bool visivel;
   final Color cor;
+  bool favorito;
+
+  setFavorito(bool fav) {
+    favorito = fav;
+  }
 }

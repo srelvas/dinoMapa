@@ -1,3 +1,4 @@
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 import 'package:flutter/material.dart';
 
 class Museus extends StatefulWidget {
@@ -10,7 +11,26 @@ class Museus extends StatefulWidget {
 class _MuseusState extends State<Museus> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Color(0xFFF2F3F8), body: Center(child: Text("MUSEUS", style: TextStyle(color: Colors.green, fontSize: 30),),),);
+    return /* const */ Scaffold(
+      appBar: AppBar(
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(top: 15, left: 220),
+            child: Text(
+              "Dino Museus",
+              style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
+            ),
+          ),
+          SizedBox(width: 22),
+        ],
+      ),
+      backgroundColor: Color(0xFFF2F3F8),
+      body: Center(
+        child: Text(
+          "MUSEUS",
+          style: TextStyle(color: Colors.green, fontSize: 30),
+        ),
+      ),
+    );
   }
 }

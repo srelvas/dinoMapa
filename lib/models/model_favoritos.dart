@@ -4,9 +4,9 @@ import 'package:flutter/foundation.dart';
 class FavoritosModel {
   const FavoritosModel({
     required this.imagem,
-    required this.dinossauro,
+    required this.nome,
   });
 
-  final String dinossauro;
+  final String nome;
   final String imagem;
 }

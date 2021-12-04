@@ -52,6 +52,33 @@ Widget buildMenu({
     Text(email),
     SizedBox(height: 60),
     ListTile(
+      contentPadding: EdgeInsets.only(left: 30),
+      leading: Icon(IconData(60981, fontFamily: 'MaterialIcons')),
+      title: Text("O teu perfil"),
+      /* onTap: () async {
+          await auth.signOut();
+          Navigator.push(c, MaterialPageRoute(builder: (context) => LoginScreen()));
+        } */
+    ),
+    ListTile(
+      contentPadding: EdgeInsets.only(left: 30),
+      leading: Icon(IconData(58173, fontFamily: 'MaterialIcons')),
+      title: Text("Sobre nós"),
+      /* onTap: () async {
+          await auth.signOut();
+          Navigator.push(c, MaterialPageRoute(builder: (context) => LoginScreen()));
+        } */
+    ),
+    ListTile(
+      contentPadding: EdgeInsets.only(left: 30),
+      leading: Icon(IconData(58751, fontFamily: 'MaterialIcons')),
+      title: Text("Definições"),
+      /* onTap: () async {
+          await auth.signOut();
+          Navigator.push(c, MaterialPageRoute(builder: (context) => LoginScreen()));
+        } */
+    ),
+    ListTile(
         contentPadding: EdgeInsets.only(left: 30),
         leading: Icon(IconData(58291, fontFamily: 'MaterialIcons')),
         title: Text("Terminar Sessão"),
