@@ -13,7 +13,15 @@ class Favoritos extends StatefulWidget {
 class _FavoritosState extends State<Favoritos> {
   List<FavoritosModel> favs = [
     FavoritosModel(
-      imagem: 'assets/images/logo.png',
+      imagem: 'assets/images/DonutFinal.png',
+      nome: 'dino',
+    ),
+    FavoritosModel(
+      imagem: 'assets/images/DonutMessed.png',
+      nome: 'dino',
+    ),
+    FavoritosModel(
+      imagem: 'assets/images/pringle.jpg',
       nome: 'dino',
     )
   ];
@@ -36,21 +44,89 @@ class _FavoritosState extends State<Favoritos> {
       backgroundColor: Color(0xFFF2F3F8),
       body: //Center(child: Text("FAVORITOS", style: TextStyle(color: Colors.red, fontSize: 30))));
           Column(children: [
-        Expanded(
-            child: ListView.separated(
-          padding: const EdgeInsets.all(8),
-          itemCount: favs.length,
-          itemBuilder: (BuildContext context, int index) {
-            return Container(
-              height: 50,
-              //color: Colors.amber[colorCodes[index]],
-              child: FavoritosWidget(model: favs[index]),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) => const Divider(),
-        ))
+            Expanded(
+              child: ListView.separated(
+                padding: const EdgeInsets.only(top:40, left:30, right:30),
+                itemCount: favs.length,
+                itemBuilder: (BuildContext context, int index) => 
+                  GestureDetector(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritoSelecionado(fav: favs[index]),),);
+                    },
+                    child:
+                      FavoritosWidget(
+                        model: favs[index]
+                      )
+                    ),
+                separatorBuilder: (BuildContext context, int index) => const Divider(
+                  height: 40,
+                ),
+              ),
+            )
         // TODO: SE TIVER TEMPO TRANSFORMAR EM SLIDER
       ]),
     );
+  }
+}
+
+class FavoritoSelecionado extends StatefulWidget {
+  final FavoritosModel fav;
+  const FavoritoSelecionado({ Key? key, required this.fav }) : super(key: key);
+
+  @override
+  _FavoritoSelecionadoState createState() => _FavoritoSelecionadoState();
+}
+
+class _FavoritoSelecionadoState extends State<FavoritoSelecionado> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      /* appBar: AppBar(
+        title:
+                  Image.asset(
+                  widget.fav.imagem,
+                  fit: BoxFit.fitWidth,
+                  //height: 100,
+
+          )
+      ), */
+      backgroundColor: Color(0xFFF2F3F8),
+      body: 
+        Stack(
+          children: [
+          Image(
+          image: AssetImage(widget.fav.imagem),
+            fit: BoxFit.cover,
+            height: 500,
+            width: 500,
+            alignment: Alignment.center,
+          ),
+         /*  Container(
+            /* Image.asset(
+              widget.fav.imagem,
+              fit: BoxFit.fitWidth,
+            ) */
+            /* decoration: BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage(widget.fav.imagem),
+                fit: BoxFit.fitWidth,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(10))
+            ), */
+          ) */
+          Center( child:
+            Row(
+              children: [
+                Container(
+                  height: 100,
+                  alignment: Alignment.center,
+                  child: Text(widget.fav.nome, style: TextStyle(color: Colors.red, fontSize: 30))
+                )
+              ]
+            )
+          )
+          
+        ],
+    ));
   }
 }

@@ -11,12 +11,24 @@ class FavoritosWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(children: [
       Container(
-        child: Text(model.nome),
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            image: AssetImage(model.imagem),
+        height: 120,
+        width: 300,
+        child: 
+          Padding(padding: EdgeInsets.all(16.0),
+          child:
+            Text(
+              model.nome,
+              textAlign: TextAlign.right,
+            ),
           ),
-        ),
+          
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(model.imagem),
+              fit: BoxFit.fitWidth,
+            ),
+            borderRadius: BorderRadius.all(Radius.circular(10))
+          ),
       ),
     ]);
   }
