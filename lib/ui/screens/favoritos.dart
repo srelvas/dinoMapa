@@ -3,6 +3,8 @@ import 'package:dino_mapa/models/model_favoritos.dart';
 import 'package:dino_mapa/ui/widgets/favoritos.dart';
 import 'package:flutter/material.dart';
 
+import 'favorito_selecionado.dart';
+
 class Favoritos extends StatefulWidget {
   const Favoritos({Key? key}) : super(key: key);
 
@@ -15,14 +17,18 @@ class _FavoritosState extends State<Favoritos> {
     FavoritosModel(
       imagem: 'assets/images/DonutFinal.png',
       nome: 'dino',
+      isFavorite: true,
+
     ),
     FavoritosModel(
       imagem: 'assets/images/DonutMessed.png',
       nome: 'dino',
+      isFavorite: true,
     ),
     FavoritosModel(
       imagem: 'assets/images/pringle.jpg',
       nome: 'dino',
+      isFavorite: true,
     )
   ];
   @override
@@ -35,7 +41,8 @@ class _FavoritosState extends State<Favoritos> {
             padding: EdgeInsets.only(top: 15, left: 150),
             child: Text(
               "Dino Favoritos",
-              style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
+              style: TextStyle(
+                  letterSpacing: 1.0, color: Colors.white, fontSize: 23),
             ),
           ),
           SizedBox(width: 22),
@@ -44,89 +51,29 @@ class _FavoritosState extends State<Favoritos> {
       backgroundColor: Color(0xFFF2F3F8),
       body: //Center(child: Text("FAVORITOS", style: TextStyle(color: Colors.red, fontSize: 30))));
           Column(children: [
-            Expanded(
-              child: ListView.separated(
-                padding: const EdgeInsets.only(top:40, left:30, right:30),
-                itemCount: favs.length,
-                itemBuilder: (BuildContext context, int index) => 
-                  GestureDetector(
-                    onTap: (){
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => FavoritoSelecionado(fav: favs[index]),),);
-                    },
-                    child:
-                      FavoritosWidget(
-                        model: favs[index]
-                      )
+        Expanded(
+          child: ListView.separated(
+            padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
+            itemCount: favs.length,
+            itemBuilder: (BuildContext context, int index) => GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          FavoritoSelecionado(fav: favs[index]),
                     ),
-                separatorBuilder: (BuildContext context, int index) => const Divider(
-                  height: 40,
-                ),
-              ),
-            )
+                  );
+                },
+                child: FavoritosWidget(model: favs[index])),
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(
+              height: 40,
+            ),
+          ),
+        )
         // TODO: SE TIVER TEMPO TRANSFORMAR EM SLIDER
       ]),
     );
-  }
-}
-
-class FavoritoSelecionado extends StatefulWidget {
-  final FavoritosModel fav;
-  const FavoritoSelecionado({ Key? key, required this.fav }) : super(key: key);
-
-  @override
-  _FavoritoSelecionadoState createState() => _FavoritoSelecionadoState();
-}
-
-class _FavoritoSelecionadoState extends State<FavoritoSelecionado> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      /* appBar: AppBar(
-        title:
-                  Image.asset(
-                  widget.fav.imagem,
-                  fit: BoxFit.fitWidth,
-                  //height: 100,
-
-          )
-      ), */
-      backgroundColor: Color(0xFFF2F3F8),
-      body: 
-        Stack(
-          children: [
-          Image(
-          image: AssetImage(widget.fav.imagem),
-            fit: BoxFit.cover,
-            height: 500,
-            width: 500,
-            alignment: Alignment.center,
-          ),
-         /*  Container(
-            /* Image.asset(
-              widget.fav.imagem,
-              fit: BoxFit.fitWidth,
-            ) */
-            /* decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage(widget.fav.imagem),
-                fit: BoxFit.fitWidth,
-              ),
-              borderRadius: BorderRadius.all(Radius.circular(10))
-            ), */
-          ) */
-          Center( child:
-            Row(
-              children: [
-                Container(
-                  height: 100,
-                  alignment: Alignment.center,
-                  child: Text(widget.fav.nome, style: TextStyle(color: Colors.red, fontSize: 30))
-                )
-              ]
-            )
-          )
-          
-        ],
-    ));
   }
 }

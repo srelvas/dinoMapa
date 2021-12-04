@@ -13,22 +13,19 @@ class FavoritosWidget extends StatelessWidget {
       Container(
         height: 120,
         width: 300,
-        child: 
-          Padding(padding: EdgeInsets.all(16.0),
-          child:
-            Text(
-              model.nome,
-              textAlign: TextAlign.right,
-            ),
+        child: Padding(
+          padding: EdgeInsets.all(16.0),
+          child: Text(
+            model.nome,
+            textAlign: TextAlign.right,
           ),
-          
-          decoration: BoxDecoration(
+        ),
+        decoration: BoxDecoration(
             image: DecorationImage(
               image: AssetImage(model.imagem),
               fit: BoxFit.fitWidth,
             ),
-            borderRadius: BorderRadius.all(Radius.circular(10))
-          ),
+            borderRadius: BorderRadius.all(Radius.circular(10))),
       ),
     ]);
   }
