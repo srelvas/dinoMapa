@@ -1,6 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 import 'package:dino_mapa/models/model_noticia.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:dino_mapa/ui/screens/noticias2.dart';
 import 'package:dino_mapa/ui/widgets/noticias.dart';
 import 'package:flutter/material.dart';
 
@@ -15,11 +15,29 @@ class _NoticiasState extends State<Noticias> {
   List<NoticiaModel> lista = [
     NoticiaModel(
       data: '27 de Outubro 2021',
-      imagem: 'dsadsadsa',
+      imagem: "assets/images/not4.jpg",
       subtitulo: 'sadasdasd',
       texto: 'adsfsdaf',
-      titulo: 'asddas',
+      titulo: 'Novo dinossauro Sauropode tem nome que alude ao Atlântico e à música de Björk',
       visivel: true,
+      cor: Colors.orange,
+    ),
+    NoticiaModel(
+      data: '29 de Outubro 2021',
+      imagem: "assets/images/not3.jpg",
+      subtitulo: 'sadasdasd',
+      texto: 'ghjghjgs',
+      titulo: 'Paleontólogos escavam quarto ninho de dinossauro Dinheirossaurus Lorinhanensis',
+      visivel: true,
+      cor: Colors.blue,
+    ),
+    NoticiaModel(
+      data: '29 de Outubro 2021',
+      imagem: "assets/images/not3.jpg",
+      subtitulo: 'sadasdasd',
+      texto: 'adsfsdaf',
+      titulo: '3',
+      visivel: false,
       cor: Colors.blue,
     ),
   ];
@@ -28,6 +46,7 @@ class _NoticiasState extends State<Noticias> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         actions: [
           Padding(
             padding: EdgeInsets.only(top: 15, left: 150),
@@ -39,23 +58,37 @@ class _NoticiasState extends State<Noticias> {
           SizedBox(width: 22),
         ],
       ),
-      backgroundColor: Color(0xFFF2F3F8),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.separated(
-                separatorBuilder: (BuildContext context, int index) =>
-                    lista[index].visivel ? _buildSeparator(lista[index]) : const SizedBox(),
+      backgroundColor: Color(0xFFF3AD78).withOpacity(0.9),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: Column(
+          children: [
+            SizedBox(height: 60),
+            Expanded(
+              child: ListView.separated(
+                separatorBuilder: (BuildContext context, int index) => SizedBox(
+                  height: 20,
+                ),
                 itemCount: lista.length,
                 itemBuilder: (
                   BuildContext context,
                   int index,
                 ) =>
-                    NoticiaWidget(
-                      model: lista[index],
-                    )),
-          ),
-        ],
+                    GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => NoticiasExpanded(model: lista[index])),
+                    );
+                  },
+                  child: NoticiaWidget(
+                    model: lista[index],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
     // para cada elemento da lista view fazer container com imagem, titulo e separador para o proximo
@@ -92,23 +125,30 @@ class _NoticiasState extends State<Noticias> {
 //             ),
 //           ),
 
-Widget _buildSeparator(NoticiaModel notification) {
-  return Padding(
-    padding: EdgeInsets.only(bottom: 10.0),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text("asdadssadasdadsdsdsdsds"),
-        if (notification.visivel)
-          Container(
-            width: 6.0,
-            height: 6.0,
-            decoration: const BoxDecoration(
-              color: Colors.red,
-              shape: BoxShape.circle,
-            ),
-          ),
-      ],
-    ),
-  );
-}
+// Widget _buildSeparator(NoticiaModel noticia) {
+//   return Padding(
+//     padding: EdgeInsets.only(bottom: 10.0),
+//     child: Column(
+//       children: [
+//         Row(
+//           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+//           children: [
+//             Expanded(
+//               child: Container(
+//                   decoration: const BoxDecoration(
+//                     color: Colors.red,
+//                     shape: BoxShape.rectangle,
+//                   ),
+//                   child: noticia.visivel
+//                       ? Text(
+//                           noticia.data,
+//                           textAlign: TextAlign.left,
+//                         )
+//                       : SizedBox()),
+//             ),
+//           ],
+//         ),
+//       ],
+//     ),
+//   );
+// }

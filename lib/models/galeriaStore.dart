@@ -11,7 +11,9 @@ class GaleriaStore extends ChangeNotifier {
     fotosNE = fNE;
   }
 
-  List<GaleriaModel> get shoes => fotos;
+  List<GaleriaModel> get listE => fotos;
+  
+  List<GaleriaModel> get listNE => fotosNE;
 
   void setFoto(int index, String image) {
     fotosNE.elementAt(index).imagem = image;

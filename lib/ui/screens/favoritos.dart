@@ -21,6 +21,7 @@ class _FavoritosState extends State<Favoritos> {
   Widget build(BuildContext context) {
     return /* const */ Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         actions: [
           Padding(
             padding: EdgeInsets.only(top: 15, left: 150),

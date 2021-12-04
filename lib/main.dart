@@ -12,16 +12,16 @@ Future<void> main() async {
       home: Home("teste"), //TODO: MUDAR PA LOGIN
       theme: ThemeData(
         iconTheme: const IconThemeData(
-          color: Color(0XFFF75701),
+          color: Color(0xFFFE6E00),
         ),
         primaryIconTheme: const IconThemeData(
-          color: Color(0XFFF75701),
+          color: Color(0xFFFE6E00),
         ),
         inputDecorationTheme: const InputDecorationTheme(),
-        primaryColor: const Color(0XFFF75701),
+        primaryColor: const Color(0xFFFE6E00),
         fontFamily: 'Hammersmith',
         colorScheme: ThemeData().colorScheme.copyWith(
-              primary: const Color(0XFFF75701),
+              primary: const Color(0xFFFE6E00),
             ),
       ),
     ),

@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, prefer_const_constructors_in_immutables, invalid_required_positional_param
 
 import 'package:dino_mapa/models/galeriaStore.dart';
-import 'package:dino_mapa/ui/widgets/galeria_Card.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
@@ -19,6 +18,7 @@ class _GaleriaState extends State<Galeria> {
     return Consumer<GaleriaStore>(
         builder: (context, galeriaStore, child) => Scaffold(
               appBar: AppBar(
+                automaticallyImplyLeading: false,
                 actions: [
                   Padding(
                     padding: EdgeInsets.only(top: 15, left: 220),
@@ -96,13 +96,13 @@ class _GaleriaState extends State<Galeria> {
                                           ),
                                         )),
                                   ),
-                                  galeriaStore.fotos[index].data != null ? Text(galeriaStore.fotos[index].data!, style: TextStyle(fontSize: 12)) : SizedBox(height: 0, width: 0),
+                                  galeriaStore.fotos[index].data != null
+                                      ? Text(galeriaStore.fotos[index].data!, style: TextStyle(fontSize: 12))
+                                      : SizedBox(height: 0, width: 0),
                                 ],
                               ),
                               Column(
-                                children: [
-                                 
-                                ],
+                                children: [],
                               ),
                             ],
                           ),
@@ -164,7 +164,8 @@ class _GaleriaState extends State<Galeria> {
                                                   child: IconButton(
                                                       onPressed: () {
                                                         galeriaStore.setFoto(index, "assets/images/lucky1.jpg");
-                                                        galeriaStore.setData(index, DateFormat('dd/MM/yyyy').format(DateTime.now()).toString()); // TODO: MUDAR ISTO
+                                                        galeriaStore.setData(
+                                                            index, DateFormat('dd/MM/yyyy').format(DateTime.now()).toString());
                                                         galeriaStore.addToEncontrados(index);
                                                       },
                                                       icon: Icon(Icons.camera_alt_rounded, color: Colors.white60))),
@@ -175,7 +176,6 @@ class _GaleriaState extends State<Galeria> {
                                               ),
                                             ),
                                           ),
-                                          
                                         ],
                                       ),
                                       Column(

@@ -18,7 +18,7 @@ class _MapaState extends State<Mapa> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Color(0xFFF2F3F8),
+            backgroundColor: Color(0xFF8AB4F8),
             appBar: AppBar(
               actions: [
                 Padding(

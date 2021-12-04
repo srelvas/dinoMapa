@@ -44,7 +44,6 @@ class _HomeState extends State<Home> {
                   descricao: 'Tirei esta foto no museu da Lourinhã. Foi descoberto em Portugal pelo paleontólogo Octávio Mateus!!',
                   imagem: "assets/images/dino_dinheirosaurus.jpeg",
                 ),
-
               ],[
                 GaleriaModel(
                   dinossauro: 'Dinheirosaurus lourinhanensis',

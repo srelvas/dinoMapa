@@ -13,6 +13,7 @@ class _MuseusState extends State<Museus> {
   Widget build(BuildContext context) {
     return /* const */ Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         actions: [
           Padding(
             padding: EdgeInsets.only(top: 15, left: 220),

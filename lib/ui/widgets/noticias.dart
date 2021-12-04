@@ -10,17 +10,53 @@ class NoticiaWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // fazer trenario com visivel ? column : null
-        // sizedbox
-        //se houver data queremos sizedbox senao nao queremos
+        model.visivel
+            ? Column(
+                children: [
+                  Text(
+                    model.data,
+                  ),
+                  SizedBox(height: 5),
+                ],
+              )
+            : SizedBox(height: 4), //TODO ver o tamanho para separar quando nao tem data
         Container(
-          child: Text(model.titulo), //imagem
+          height: 160,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(model.imagem),
+              fit: BoxFit.fitWidth,
+            ),
+          ),
         ),
-        // separador
-        Container(
-          decoration: BoxDecoration(color: model.cor),
-          child: Text(model.titulo),
+        // Container(height: 2), // TODO: DPS VER ISTO
+        Row(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                    color: model.cor,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(10),
+                      bottomRight: Radius.circular(10),
+                    )),
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    right: 7.0,
+                    left: 7.0,
+                    top: 5.0,
+                    bottom: 5.0,
+                  ),
+                  child: Text(
+                    model.titulo,
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ],
     );
