@@ -15,16 +15,24 @@ class NoticiaWidget extends StatelessWidget {
         model.visivel
             ? Column(
                 children: [
-                  Text(
-                    model.data,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4),
+                    child: Text(
+                      model.data,
+                    ),
                   ),
                   SizedBox(height: 5),
                 ],
               )
-            : SizedBox(height: 4), //TODO ver o tamanho para separar quando nao tem data
+            : SizedBox(height: 10),
+        //TODO ver o tamanho para separar quando nao tem data
         Container(
           height: 160,
           decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(10),
+              topRight: Radius.circular(10),
+            ),
             image: DecorationImage(
               image: AssetImage(model.imagem),
               fit: BoxFit.fitWidth,

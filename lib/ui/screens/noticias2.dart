@@ -4,7 +4,8 @@ import 'package:dino_mapa/ui/widgets/noticias.dart';
 import 'package:flutter/material.dart';
 
 class NoticiasExpanded extends StatefulWidget {
-  const NoticiasExpanded({Key? key, required NoticiaModel this.model}) : super(key: key);
+  const NoticiasExpanded({Key? key, required NoticiaModel this.model})
+      : super(key: key);
 
   final NoticiaModel model;
 
@@ -20,16 +21,68 @@ class _NoticiasExpandedState extends State<NoticiasExpanded> {
         automaticallyImplyLeading: false,
         actions: [
           Padding(
-            padding: EdgeInsets.only(top: 15, left: 150),
+            padding: EdgeInsets.only(top: 20, left: 150),
             child: Text(
-              "Dino Noticias", //TODO este text vai ser a data
-              style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
+              widget.model.data, //TODO este text vai ser a data
+              style: TextStyle(
+                  letterSpacing: 1.0, color: Colors.white, fontSize: 15),
             ),
           ),
           SizedBox(width: 22),
-        ], //TODO meter leading aqui com botao pa voltar para tras
+        ],
+        leading: IconButton(
+          icon: Icon(
+            Icons.arrow_back_ios,
+          ),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ), //TODO meter leading aqui com botao pa voltar para tras
+
+      backgroundColor: Color(0xFFF3AD78),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 30, right: 30),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 15),
+              /*Container(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage(widget.model.imagem),
+                  fit: BoxFit.fill,
+                ),
+              ),
+            ),*/
+              ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image(image: AssetImage(widget.model.imagem)),
+              ),
+              SizedBox(height: 18),
+              Text(
+                widget.model.titulo,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+              ),
+              SizedBox(height: 3),
+              Text(
+                widget.model.subtitulo,
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Color(0xFF404040), fontSize: 13),
+              ),
+              SizedBox(height: 5),
+              Text(widget.model.texto,textAlign: TextAlign.justify,
+                style: TextStyle(fontSize: 13),),
+              /*Column(
+                children: [
+                  Expanded(
+                    child: Text(widget.model.texto),
+                  )
+                ],
+              )*/
+            ],
+          ),
+        ),
       ),
-      backgroundColor: Color(0xFFF3AD78).withOpacity(0.9),
     );
     // para cada elemento da lista view fazer container com imagem, titulo e separador para o proximo
     // para cada elemnto da lista cria um NoticiaWidget(model)
