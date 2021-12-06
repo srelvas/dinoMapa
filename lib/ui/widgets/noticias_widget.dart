@@ -1,11 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print, file_names
 import 'package:dino_mapa/models/model_noticia.dart';
 import 'package:flutter/material.dart';
 
 class NoticiaWidget extends StatelessWidget {
-  const NoticiaWidget({Key? key, required this.model}) : super(key: key);
+  const NoticiaWidget({Key? key, required this.model, required this.index}) : super(key: key);
 
   final NoticiaModel model;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +26,6 @@ class NoticiaWidget extends StatelessWidget {
                 ],
               )
             : SizedBox(height: 10),
-        //TODO ver o tamanho para separar quando nao tem data
         Container(
           height: 160,
           decoration: BoxDecoration(
@@ -39,31 +39,35 @@ class NoticiaWidget extends StatelessWidget {
             ),
           ),
         ),
-        // Container(height: 2), // TODO: DPS VER ISTO
-        Row(
+        Column(
           children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                    color: model.cor,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(10),
-                      bottomRight: Radius.circular(10),
-                    )),
-                child: Padding(
-                  padding: const EdgeInsets.only(
-                    right: 7.0,
-                    left: 7.0,
-                    top: 5.0,
-                    bottom: 5.0,
-                  ),
-                  child: Text(
-                    model.titulo,
-                    textAlign: TextAlign.center,
+            Row(
+              children: [
+                Expanded(
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: model.cor,
+                        borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(10),
+                          bottomRight: Radius.circular(10),
+                        )),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        right: 7.0,
+                        left: 7.0,
+                        top: 5.0,
+                        bottom: 5.0,
+                      ),
+                      child: Text(
+                        model.titulo,
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
                   ),
                 ),
-              ),
+              ],
             ),
+            SizedBox(height: index == 3 ? 30 : 0) 
           ],
         ),
       ],

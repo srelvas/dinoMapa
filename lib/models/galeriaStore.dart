@@ -12,11 +12,16 @@ class GaleriaStore extends ChangeNotifier {
   }
 
   List<GaleriaModel> get listE => fotos;
-  
+
   List<GaleriaModel> get listNE => fotosNE;
 
   void setFoto(int index, String image) {
     fotosNE.elementAt(index).imagem = image;
+    notifyListeners();
+  }
+
+  void setFotoE(int index, String image) {
+    fotos.elementAt(index).imagem = image;
     notifyListeners();
   }
 
@@ -25,8 +30,8 @@ class GaleriaStore extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setDescricao(int index, String descricao) {
-    fotosNE.elementAt(index).descricao = descricao;
+  void setDescricao(int index, String? descricao) {
+    fotos.elementAt(index).descricao = descricao;
     notifyListeners();
   }
 
@@ -49,5 +54,4 @@ class GaleriaModel {
   String? imagem;
   String? descricao;
   String? data;
-
 }

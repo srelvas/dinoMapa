@@ -10,6 +10,7 @@ class NoticiaModel {
     required this.texto,
     required this.visivel,
     required this.cor,
+    required this.fonte,
   });
 
   final String titulo;
@@ -19,4 +20,5 @@ class NoticiaModel {
   final String texto;
   final bool visivel;
   final Color cor;
+  final String fonte;
 }

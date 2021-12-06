@@ -38,17 +38,19 @@ class _HomeState extends State<Home> {
           ChangeNotifierProvider(
             create: (context) => GaleriaStore(
               [
+                // GaleriaModel(
+                //   data: "31/10/2021",
+                //   dinossauro: 'Dinheirosaurus lourinhanensis',
+                //   descricao: 'Tirei esta foto no museu da Lourinhã. Foi descoberto em Portugal pelo paleontólogo Octávio Mateus!!',
+                //   imagem: "assets/images/dino_dinheirosaurus.jpeg",
+                // ),
+              ],
+              [
                 GaleriaModel(
-                  data: "31/10/2021",
                   dinossauro: 'Dinheirosaurus lourinhanensis',
                   descricao: 'Tirei esta foto no museu da Lourinhã. Foi descoberto em Portugal pelo paleontólogo Octávio Mateus!!',
-                  imagem: "assets/images/dino_dinheirosaurus.jpeg",
                 ),
-              ],[
                 GaleriaModel(
-                  dinossauro: 'Dinheirosaurus lourinhanensis',
-                ),
-                 GaleriaModel(
                   dinossauro: 'dino 2',
                 ),
                 GaleriaModel(
@@ -56,66 +58,13 @@ class _HomeState extends State<Home> {
                 ),
                 GaleriaModel(
                   dinossauro: 'dino 4',
-                ),                                               
+                ),
               ],
-            ) ,
+            ),
           ),
         ],
         child: SafeArea(
             child: Scaffold(
-          // body: PageTransitionSwitcher(
-          //     child: _pages[_currentIndex],
-          //     transitionBuilder: (child, primaryAnimation, secondaryAnimation) =>
-          //         FadeThroughTransition(animation: primaryAnimation, secondaryAnimation: secondaryAnimation, child: child)), // NAO GOSTO DESTA ANIMACAO MUDAR
-          // bottomNavigationBar: BottomNavigationBar(
-          //   selectedFontSize: 13.0,
-          //   type: BottomNavigationBarType.fixed,
-          //   iconSize: 35,
-          //   selectedItemColor: Color(0XFFF75701),
-          //   unselectedItemColor: Color(0XFF7A7D80),
-          //   selectedLabelStyle: TextStyle(
-          //     color: Color(0XFFF75701),
-          //   ),
-          //   unselectedLabelStyle: TextStyle(
-          //     color: Color(0XFFF75701),
-          //   ),
-          //   currentIndex: _currentIndex,
-          //   onTap: (int index) => {onTapped(index)},
-          //   items: [
-          //     BottomNavigationBarItem(
-          //       label: "Favoritos",
-          //       icon: Icon(
-          //         MyFlutterApp.star_2,
-          //         size: 34,
-          //       ),
-          //     ),
-          //     BottomNavigationBarItem(
-          //       label: "Noticias",
-          //       icon: Icon(
-          //         MyFlutterApp.feed,
-          //       ),
-          //     ),
-          //     BottomNavigationBarItem(
-          //       label: "Mapa",
-          //       icon: Icon(
-          //         MyFlutterApp.mapa,
-          //       ),
-          //     ),
-          //     BottomNavigationBarItem(
-          //       label: "Galeria",
-          //       icon: Icon(
-          //         MyFlutterApp.galeria,
-          //       ),
-          //     ),
-          //     BottomNavigationBarItem(
-          //       label: "Museus",
-          //       icon: Icon(
-          //         MyFlutterApp.museu,
-          //         size: 34,
-          //       ),
-          //     ),
-          //   ],
-          // ),
           body: DefaultTabController(
             initialIndex: 2,
             length: 5,
@@ -125,7 +74,7 @@ class _HomeState extends State<Home> {
                   bottomNavigationBar: Container(
                     decoration: BoxDecoration(color: Colors.white, boxShadow: [
                       BoxShadow(
-                        color: Colors.black12, //TODO: IDK HOW I FEEL ABOUT THIS SHADOW LOL
+                        color: Colors.black12,
                         blurRadius: 15.0,
                       )
                     ]),

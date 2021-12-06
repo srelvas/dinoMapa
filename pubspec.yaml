@@ -62,6 +62,7 @@ dependencies:
     syncfusion_flutter_signaturepad: ^19.3.43-beta
     syncfusion_flutter_pdfviewer: ^19.3.43-beta
     syncfusion_flutter_treemap: ^19.3.43-beta
+    image_picker: ^0.8.4+4
 
 dev_dependencies:
     flutter_test:

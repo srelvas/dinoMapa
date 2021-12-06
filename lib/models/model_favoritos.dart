@@ -16,5 +16,5 @@ class FavoritosModel {
   final String nome;
   final String imagem;
   final bool isFavorite;
-  final InfoWidget info;
+  final InfoModel info;
 }

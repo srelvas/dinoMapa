@@ -3,8 +3,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dino_mapa/models/user.dart';
 import 'package:dino_mapa/ui/screens/home.dart';
+import 'package:dino_mapa/ui/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
 class RegistrationScreen extends StatefulWidget {
@@ -27,38 +29,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final usernameField = TextFormField(
-        cursorColor: Theme.of(context).colorScheme.primary,
-        autofocus: false,
-        controller: usernameEditingController,
-        keyboardType: TextInputType.name,
-        validator: (value) {
-          RegExp regex = new RegExp(r'^.{3,}$');
-          if (value!.isEmpty) {
-            return ('Insere um nome de utilizador');
-          }
-          if (!regex.hasMatch(value)) {
-            return ('Insere um nome de utilizador valido (Min. 3 caracteres)');
-          }
-          return null;
-        },
-        onSaved: (value) {
-          usernameEditingController.text = value!;
-        },
-        textInputAction: TextInputAction.next,
-        decoration: InputDecoration(
-          filled: true,
-          fillColor: Colors.white,
-          prefixIcon: Icon(Icons.account_circle),
-          contentPadding: EdgeInsets.all(0),
-          hintText: "Nome de Utilizador",
-          hintStyle: TextStyle(fontSize: 14),
-          border: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.circular(10),
-          ),
-        ));
-
     final emailField = TextFormField(
         cursorColor: Theme.of(context).colorScheme.primary,
         autofocus: false,
@@ -66,11 +36,11 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         keyboardType: TextInputType.emailAddress,
         validator: (value) {
           if (value!.isEmpty) {
-            return ('Por favor insere o teu email');
+            return ('Insere um email');
           }
           // reg expression for email validation
           if (!RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]").hasMatch(value)) {
-            return ('Por favor insere um email válido');
+            return ('Email inválido');
           }
           return null;
         },
@@ -99,7 +69,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         validator: (value) {
           RegExp regex = RegExp(r'^.{6,}$');
           if (value!.isEmpty) {
-            return ('A senha é obrigatória');
+            return ('Insere uma senha');
           }
           if (!regex.hasMatch(value)) {
             return ('Insere uma senha válida (min. 6 caracteres)');
@@ -128,7 +98,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
         obscureText: true,
         validator: (value) {
           if (confirmPasswordEditingController.text != passwordEditingController.text) {
-            return ('As senhas não são iguais');
+            return ('As duas senhas não são iguais');
           }
           return null;
         },
@@ -212,7 +182,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                         ),
                         SizedBox(height: 65),
                         Container(
-                          height: 400,
+                          height: 330,
                           width: 310,
                           decoration: BoxDecoration(
                             boxShadow: [
@@ -234,8 +204,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: <Widget>[
-                                  usernameField,
-                                  SizedBox(height: 15),
                                   emailField,
                                   SizedBox(height: 15),
                                   passwordField,
@@ -265,7 +233,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       try {
         await _auth
             .createUserWithEmailAndPassword(email: email, password: password)
-            .then((value) => {postDetailsToFirestore()})
+            .then((value) => {
+                  postDetailsToFirestore(),
+                  Fluttertoast.showToast(msg: "Registo executado com sucesso!"),
+                })
             .catchError((e) {
           Alert(
             context: context,
@@ -326,6 +297,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
       ),
     ).show();
 
-    Navigator.pushAndRemoveUntil((context), MaterialPageRoute(builder: (context) => Home(userModel.email!)), (route) => false);
+    Navigator.pushAndRemoveUntil((context), MaterialPageRoute(builder: (context) => LoginScreen()), (route) => false);
   }
 }

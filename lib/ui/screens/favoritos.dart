@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 import 'package:dino_mapa/models/model_favoritos.dart';
-import 'package:dino_mapa/ui/widgets/favoritos.dart';
+import 'package:dino_mapa/models/model_info.dart';
+import 'package:dino_mapa/ui/widgets/favoritos_widget.dart';
 import 'package:flutter/material.dart';
 
 import 'favorito_selecionado.dart';
@@ -18,18 +19,20 @@ class _FavoritosState extends State<Favoritos> {
       imagem: 'assets/images/DonutFinal.png',
       nome: 'dino',
       isFavorite: true,
-
+      info: InfoModel(evolucao: 'aaa', tamanho: 'bbb'),
     ),
     FavoritosModel(
       imagem: 'assets/images/DonutMessed.png',
       nome: 'dino',
       isFavorite: true,
+      info: InfoModel(evolucao: 'aaa', tamanho: 'bbb'),
     ),
     FavoritosModel(
-      imagem: 'assets/images/pringle.jpg',
+      imagem: 'assets/images/elmo.jpg',
       nome: 'dino',
       isFavorite: true,
-    )
+      info: InfoModel(evolucao: 'aaa', tamanho: 'bbb'),
+    ),
   ];
   @override
   Widget build(BuildContext context) {
@@ -41,8 +44,7 @@ class _FavoritosState extends State<Favoritos> {
             padding: EdgeInsets.only(top: 15, left: 150),
             child: Text(
               "Dino Favoritos",
-              style: TextStyle(
-                  letterSpacing: 1.0, color: Colors.white, fontSize: 23),
+              style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
             ),
           ),
           SizedBox(width: 22),
@@ -60,14 +62,12 @@ class _FavoritosState extends State<Favoritos> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          FavoritoSelecionado(fav: favs[index]),
+                      builder: (context) => FavoritoSelecionado(fav: favs[index]),
                     ),
                   );
                 },
                 child: FavoritosWidget(model: favs[index])),
-            separatorBuilder: (BuildContext context, int index) =>
-                const Divider(
+            separatorBuilder: (BuildContext context, int index) => const Divider(
               height: 40,
             ),
           ),

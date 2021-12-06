@@ -265,22 +265,13 @@ class _LoginScreenState extends State<LoginScreen> {
         switch (error.code) {
           //TODO: TRADUZIR
           case "invalid-email":
-            errorMessage = "Your email address appears to be malformed.";
+            errorMessage = "Email invalido.";
             break;
           case "wrong-password":
-            errorMessage = "Your password is wrong.";
+            errorMessage = "Password errada.";
             break;
           case "user-not-found":
-            errorMessage = "User with this email doesn't exist.";
-            break;
-          case "user-disabled":
-            errorMessage = "User with this email has been disabled.";
-            break;
-          case "too-many-requests":
-            errorMessage = "Too many requests";
-            break;
-          case "operation-not-allowed":
-            errorMessage = "Signing in with Email and Password is not enabled.";
+            errorMessage = "Utilizador não encontrado.";
             break;
           default:
             errorMessage = "An undefined Error happened.";
