@@ -1,6 +1,8 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, prefer_const_constructors_in_immutables, invalid_required_positional_param
 
 import 'package:animations/animations.dart';
+import 'package:dino_mapa/data/dino_data.dart';
+import 'package:dino_mapa/models/dinoStore.dart';
 import 'package:dino_mapa/models/galeriaStore.dart';
 import 'package:dino_mapa/ui/screens/favoritos.dart';
 import 'package:dino_mapa/ui/screens/noticias.dart';
@@ -33,37 +35,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (context) => GaleriaStore(
-              [
-                // GaleriaModel(
-                //   data: "31/10/2021",
-                //   dinossauro: 'Dinheirosaurus lourinhanensis',
-                //   descricao: 'Tirei esta foto no museu da Lourinhã. Foi descoberto em Portugal pelo paleontólogo Octávio Mateus!!',
-                //   imagem: "assets/images/dino_dinheirosaurus.jpeg",
-                // ),
-              ],
-              [
-                GaleriaModel(
-                  dinossauro: 'Dinheirosaurus lourinhanensis',
-                  descricao: 'Tirei esta foto no museu da Lourinhã. Foi descoberto em Portugal pelo paleontólogo Octávio Mateus!!',
-                ),
-                GaleriaModel(
-                  dinossauro: 'dino 2',
-                ),
-                GaleriaModel(
-                  dinossauro: 'dino 3',
-                ),
-                GaleriaModel(
-                  dinossauro: 'dino 4',
-                ),
-              ],
-            ),
-          ),
-        ],
-        child: SafeArea(
+    return SafeArea(
             child: Scaffold(
           body: DefaultTabController(
             initialIndex: 2,
@@ -82,54 +54,54 @@ class _HomeState extends State<Home> {
                       labelPadding: EdgeInsets.symmetric(horizontal: 2.0),
                       tabs: <Widget>[
                         Tab(
-                          height: 62,
+                          height: 52,
                           text: "Favoritos",
                           icon: Icon(
                             MyFlutterApp.star_2,
-                            size: 35,
+                            size: 30,
                           ),
                           iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
                         ),
                         Tab(
-                          height: 62,
+                          height: 52,
                           text: "Noticias",
                           icon: Icon(
                             MyFlutterApp.feed,
-                            size: 35,
+                            size: 30,
                           ),
                           iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
                         ),
                         Tab(
-                          height: 62,
+                          height: 52,
                           text: "Mapa",
                           icon: Icon(
                             MyFlutterApp.mapa,
-                            size: 35,
+                            size: 30,
                           ),
                           iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
                         ),
                         Tab(
                           text: "Galeria",
-                          height: 62,
+                          height: 52,
                           icon: Icon(
                             MyFlutterApp.galeria,
-                            size: 36,
+                            size: 31,
                           ),
                           iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
                         ),
                         Tab(
                           text: "Museus",
-                          height: 62,
+                          height: 52,
                           icon: Icon(
                             MyFlutterApp.museu,
-                            size: 34,
+                            size: 29,
                           ),
                           iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
                         ),
                       ],
                       labelColor: Theme.of(context).primaryColor,
                       labelStyle: TextStyle(
-                        fontSize: 12,
+                        fontSize: 10,
                         fontFamily: 'Hammersmith',
                       ),
                       unselectedLabelColor: Colors.grey,
@@ -149,7 +121,7 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-        )));
+        ));
   }
 
   void onTapped(int index) {

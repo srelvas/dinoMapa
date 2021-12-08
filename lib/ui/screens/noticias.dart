@@ -168,6 +168,7 @@ Com 180 modelos de animais à escala real, o Dino Parque proporciona uma viagem 
               child: SearchBarN(
                 onChanged: search,
                 text: query,
+                titulo: "Procura por tema ou data",
               ),
             ),
             //SearchWidget(text: query, onChanged: search, hintText: 'Filtra por dinossauro ou por data'),

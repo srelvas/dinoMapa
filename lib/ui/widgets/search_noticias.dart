@@ -5,11 +5,14 @@ import 'package:flutter/material.dart';
 class SearchBarN extends StatefulWidget {
   final String text;
   final ValueChanged<String> onChanged;
+  final String titulo;
 
-  SearchBarN({Key? key,     
-  required this.text,
+  SearchBarN({
+    Key? key,
+    required this.text,
     required this.onChanged,
-    }) : super(key: key);
+    required this.titulo,
+  }) : super(key: key);
 
   @override
   _SearchBarNState createState() => _SearchBarNState();
@@ -37,14 +40,14 @@ class _SearchBarNState extends State<SearchBarN> {
               padding: EdgeInsets.only(left: 16),
               child: !_folded
                   ? TextField(
-                    controller: controller,
-                    style: TextStyle(fontSize: 14),
+                      controller: controller,
+                      style: TextStyle(fontSize: 14),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(bottom: 15),
-                          hintText: "Procura por tema ou por data",
+                          hintText: widget.titulo,
                           hintStyle: TextStyle(color: Colors.orange[300], fontSize: 14),
                           border: InputBorder.none),
-                    onChanged: widget.onChanged,
+                      onChanged: widget.onChanged,
                     )
                   : null,
             ),
@@ -61,15 +64,17 @@ class _SearchBarNState extends State<SearchBarN> {
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(7),
-                  child: !_folded ? GestureDetector(
-                  child: Icon(Icons.close, size: 18, color: Colors.orange),
-                  onTap: () {
-                    controller.clear();
-                    widget.onChanged('');
-                    FocusScope.of(context).requestFocus(FocusNode());
-                    _folded = !_folded;
-                  },
-                ) : Icon(Icons.search, size: 18, color: Colors.orange),
+                  child: !_folded
+                      ? GestureDetector(
+                          child: Icon(Icons.close, size: 18, color: Colors.orange),
+                          onTap: () {
+                            controller.clear();
+                            widget.onChanged('');
+                            _folded = !_folded;
+                            FocusScope.of(context).requestFocus(FocusNode());
+                          },
+                        )
+                      : Icon(Icons.search, size: 18, color: Colors.orange),
                 ),
                 onTap: () {
                   setState(() {

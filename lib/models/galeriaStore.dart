@@ -11,14 +11,11 @@ class GaleriaStore extends ChangeNotifier {
     fotosNE = fNE;
   }
 
-  List<GaleriaModel> get listE => fotos;
-
-  List<GaleriaModel> get listNE => fotosNE;
-
   void setFoto(int index, String image) {
     fotosNE.elementAt(index).imagem = image;
     notifyListeners();
   }
+
 
   void setFotoE(int index, String image) {
     fotos.elementAt(index).imagem = image;

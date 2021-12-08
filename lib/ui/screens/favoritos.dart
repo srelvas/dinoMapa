@@ -1,10 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
-import 'package:dino_mapa/models/model_favoritos.dart';
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print, unnecessary_this
+import 'package:dino_mapa/models/dinoStore.dart';
 import 'package:dino_mapa/models/model_info.dart';
 import 'package:dino_mapa/ui/widgets/favoritos_widget.dart';
+import 'package:dino_mapa/ui/widgets/search_noticias.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-import 'favorito_selecionado.dart';
+import 'dino_selecionado.dart';
 
 class Favoritos extends StatefulWidget {
   const Favoritos({Key? key}) : super(key: key);
@@ -14,29 +16,26 @@ class Favoritos extends StatefulWidget {
 }
 
 class _FavoritosState extends State<Favoritos> {
-  List<FavoritosModel> favs = [
-    FavoritosModel(
-      imagem: 'assets/images/DonutFinal.png',
-      nome: 'dino',
-      isFavorite: true,
-      info: InfoModel(evolucao: 'aaa', tamanho: 'bbb'),
-    ),
-    FavoritosModel(
-      imagem: 'assets/images/DonutMessed.png',
-      nome: 'dino',
-      isFavorite: true,
-      info: InfoModel(evolucao: 'aaa', tamanho: 'bbb'),
-    ),
-    FavoritosModel(
-      imagem: 'assets/images/elmo.jpg',
-      nome: 'dino',
-      isFavorite: true,
-      info: InfoModel(evolucao: 'aaa', tamanho: 'bbb'),
-    ),
-  ];
+  late List<DinoModel> favs;
+  late List<DinoModel> favs2;
+
+  String query = "";
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void didChangeDependencies() {
+    favs = Provider.of<DinoStore>(context).favoritos;
+    favs2 = [...favs];
+    super.didChangeDependencies();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return /* const */ Scaffold(
+    return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
@@ -52,21 +51,34 @@ class _FavoritosState extends State<Favoritos> {
       ),
       backgroundColor: Color(0xFFF2F3F8),
       body: //Center(child: Text("FAVORITOS", style: TextStyle(color: Colors.red, fontSize: 30))));
-          Column(children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 15, right: 20),
+          child: SearchBarN(
+            onChanged: search,
+            text: query,
+            titulo: "Procura por nome",
+          ),
+        ),
         Expanded(
           child: ListView.separated(
-            padding: const EdgeInsets.only(top: 40, left: 30, right: 30),
-            itemCount: favs.length,
+            padding: const EdgeInsets.only(top: 20, left: 20, right: 20),
+            itemCount: favs2.length,
             itemBuilder: (BuildContext context, int index) => GestureDetector(
                 onTap: () {
+                  setState(() {
+                    query = "";
+                  });
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => FavoritoSelecionado(fav: favs[index]),
+                      builder: (context) => DinoSelecionado(index: index),
                     ),
                   );
                 },
-                child: FavoritosWidget(model: favs[index])),
+                child: FavoritosWidget(model: favs2[index])),
             separatorBuilder: (BuildContext context, int index) => const Divider(
               height: 40,
             ),
@@ -75,5 +87,19 @@ class _FavoritosState extends State<Favoritos> {
         // TODO: SE TIVER TEMPO TRANSFORMAR EM SLIDER
       ]),
     );
+  }
+
+  void search(String query) {
+    final l = favs.where((nModel) {
+      final titulo = nModel.nome.toLowerCase();
+      final searchQ = query.toLowerCase();
+
+      return titulo.contains(searchQ);
+    }).toList();
+
+    setState(() {
+      this.query = query;
+      this.favs2 = l;
+    });
   }
 }
