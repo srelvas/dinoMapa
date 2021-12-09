@@ -16,7 +16,6 @@ class GaleriaStore extends ChangeNotifier {
     notifyListeners();
   }
 
-
   void setFotoE(int index, String image) {
     fotos.elementAt(index).imagem = image;
     notifyListeners();

@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:dino_mapa/data/dino_data.dart';
 import 'package:dino_mapa/models/dinoStore.dart';
 import 'package:dino_mapa/models/galeriaStore.dart';
@@ -12,45 +14,41 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(
-   MultiProvider(
-     child: App(),
-        providers: [
-          ChangeNotifierProvider<DinoStore>(
-            create: (_) => DinoStore(
-               allDinos,
-              favoritos,
-            ),),
-          ChangeNotifierProvider<GaleriaStore>(
-            create: (_) => GaleriaStore(
-              [
-
-              ],
-              [
-                GaleriaModel(
-                  dinossauro: 'Dinheirosaurus lourinhanensis',
-                ),
-                GaleriaModel(
-                  dinossauro: 'Sauropoda',
-                ),
-                GaleriaModel(
-                  dinossauro: 'Dromaeosauridae',
-                ),
-                GaleriaModel(
-                  dinossauro: 'Apatosaurus alenquerense',
-                ),
-                GaleriaModel(
-                  dinossauro: 'Diagoniella',
-                ),
-                GaleriaModel(
-                  dinossauro: 'Terebratulida',
-                ),
-                GaleriaModel(
-                  dinossauro: 'Deltapodus',
-                ),
-              ],
-            ),    
-          ) 
+  runApp(MultiProvider(child: App(), providers: [
+    ChangeNotifierProvider<DinoStore>(
+      create: (_) => DinoStore(
+        allDinos,
+        favoritos,
+      ),
+    ),
+    ChangeNotifierProvider<GaleriaStore>(
+      create: (_) => GaleriaStore(
+        [],
+        [
+          GaleriaModel(
+            dinossauro: 'Dinheirosaurus lourinhanensis',
+          ),
+          GaleriaModel(
+            dinossauro: 'Sauropoda',
+          ),
+          GaleriaModel(
+            dinossauro: 'Dromaeosauridae',
+          ),
+          GaleriaModel(
+            dinossauro: 'Apatosaurus alenquerense',
+          ),
+          GaleriaModel(
+            dinossauro: 'Diagoniella',
+          ),
+          GaleriaModel(
+            dinossauro: 'Terebratulida',
+          ),
+          GaleriaModel(
+            dinossauro: 'Deltapodus',
+          ),
+        ],
+      ),
+    )
   ]));
 }
 
@@ -59,7 +57,7 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(), 
+      home: LoginScreen(),
       theme: ThemeData(
         iconTheme: const IconThemeData(
           color: Color(0xFFFE6E00),
@@ -76,9 +74,4 @@ class App extends StatelessWidget {
       ),
     );
   }
-
-
-
-
-
 }

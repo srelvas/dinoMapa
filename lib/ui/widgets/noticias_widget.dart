@@ -11,7 +11,7 @@ class NoticiaWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(left: 16, right:16),
+      padding: const EdgeInsets.only(left: 16, right: 16),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -48,6 +48,7 @@ class NoticiaWidget extends StatelessWidget {
                   Expanded(
                     child: Container(
                       decoration: BoxDecoration(
+                          boxShadow: kElevationToShadow[6],
                           color: model.cor,
                           borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(10),
@@ -69,7 +70,7 @@ class NoticiaWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: index == 3 ? 30 : 0) 
+              SizedBox(height: index == 3 ? 30 : 0)
             ],
           ),
         ],

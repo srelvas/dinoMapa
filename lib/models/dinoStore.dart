@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 
 class DinoStore extends ChangeNotifier {
   late List<DinoModel> todos;
-  late List<DinoModel> favoritos; // idk
+  late List<DinoModel> favoritos;
 
   DinoStore(List<DinoModel> t, List<DinoModel> f) {
     todos = t;
@@ -36,6 +36,10 @@ class DinoModel {
     required this.sitioDescoberta,
     required this.index,
     required this.imagemPrincipal,
+    required this.tituloImagem1,
+    required this.imagem1,
+    required this.tituloImagem2,
+    required this.imagem2,
   });
 
   final String nome;
@@ -49,4 +53,8 @@ class DinoModel {
   final String sitioDescoberta;
   final int index;
   final String imagemPrincipal;
+  final String tituloImagem1;
+  final String imagem1;
+  final String tituloImagem2;
+  final String imagem2;
 }

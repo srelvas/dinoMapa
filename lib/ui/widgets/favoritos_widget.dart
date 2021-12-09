@@ -14,16 +14,18 @@ class FavoritosWidget extends StatelessWidget {
         height: 140,
         width: 320,
         child: Padding(
-          padding: EdgeInsets.all(16.0),
+          padding: EdgeInsets.only(top: 6, right: 11),
           child: Text(
             model.nome,
             textAlign: TextAlign.right,
+            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
           ),
         ),
         decoration: BoxDecoration(
+            boxShadow: kElevationToShadow[6],
             image: DecorationImage(
               image: AssetImage(model.imagemPrincipal),
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.fill,
             ),
             borderRadius: BorderRadius.all(Radius.circular(10))),
       ),

@@ -3,7 +3,6 @@ import 'package:dino_mapa/models/model_noticia.dart';
 import 'package:dino_mapa/ui/screens/noticias_expanded.dart';
 import 'package:dino_mapa/ui/widgets/noticias_widget.dart';
 import 'package:dino_mapa/ui/widgets/search_noticias.dart';
-import 'package:dino_mapa/ui/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 
 class Noticias extends StatefulWidget {
@@ -42,39 +41,33 @@ Durante mais de 20 anos, José Joaquim dos Santos recolheu alguns milhares de f�
 A coleção tem vindo a ser estudada desde essa altura por investigadores associados da Sociedade de História Natural de Torres Vedras.''',
         titulo: 'Novo dinossauro Sauropode tem nome que alude ao Atlântico e à música de Björk',
         visivel: true,
-        cor: Color(0xFF23b9d7),
+        cor: Color(0xFFEE6F68),
         fonte: 'Diário de Notícias'),
     NoticiaModel(
         data: '29 de Outubro 2021',
-        imagem: "assets/images/not3.jpg",
+        imagem: "assets/images/not1.jpg",
         subtitulo:
-            'Um quarto ninho de dinossauro foi escavado nas arribas de uma praia da Lourinhã e deverá pertencer ao mesmo dinossauro carnívoro dos anteriores, fazendo deste o local no mundo com mais ninhos de dinossauro.',
+            'Fósseis de uma nova espécie de réptil marinho da era dos dinossauros, descoberto em Portugal, vão ser mostrados ao público pela primeira vez, a partir de sábado, no Dino Parque da Lourinhã, onde estão expostos até final do verão.',
         texto:
-            '''O paleontólogo Miguel Moreno Azanza, especialista em ninhos e ovos de dinossauros, explicou à agência Lusa que "as cascas são semelhantes às dos ovos dos outros ninhos, por isso tem quase a certeza de que o ninho pertence" ao Lourinhanosaurus antunesi, espécie de dinossauro carnívoro descoberta também neste concelho do distrito de Lisboa, motivo pelo qual foi assim batizada.
+            ''''O 'Plesiopharos moelensis' , uma nova espécie de réptil marinho da era dos dinossauros, que habitou a terra há cerca de 195 milhões de anos, é a estrela da nova exposição temporária do Dino Parque da Lourinhã, no distrito de Lisboa.
 
-Os quatro ninhos têm em comum o facto de terem ovos de 12 centímetros, com cascas negras de um milímetro de espessura e poros que permitem a sua identificação. Os paleontólogos suspeitam que o ninho agora escavado na praia do Caniçal, com cerca de 10 ovos, poderá ser mais antigo do que os anteriores escavados no concelho.
+Os fósseis, que estarão patentes ao público pela primeira vez, são parte do "mais antigo e completo exemplar da Península Ibérica do réptil com "uma forma que o associa facilmente à silhueta do célebre monstro do Lago Ness", divulgou o Dino Parque.
 
-Pela diversidade de ninhos encontrados, os cientistas acreditam que a Lourinhã seria o "local ideal" para os dinossauros carnívoros daquela espécie nidificarem.
+Os fósseis foram descobertos por dois colecionadores, Victor Teixeira e António Domingos, em São Pedro de Moel, no concelho da Marinha Grande, após o que foram doados ao Museu da Lourinhã e preparados, no laboratório do Dino Parque, por uma equipa internacional de paleontólogos e geólogos ligados a várias instituições.
 
-A Lourinhã seria uma "área de muitos rios com planícies inundadas, o que era bom para o Lourinhanosaurus antunesi nidificar", apontou Miguel Moreno Azanza, investigador da Universidade Nova de Lisboa, que, com conjunto com Octávio Mateus, da mesma universidade, coordenou as escavações organizadas pelo Museu da Lourinhã.
+O trabalho, publicado na revista Acta Palaeontologica Polonica, foi liderado por Simão Mateus, Diretor Científico do Dino Parque, e teve como primeiro autor Eduardo Puértolas-Pascual, investigador da Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa.
 
-"Os dinossauros aproveitavam as áreas secas para nidificar e, quando estas inundavam, enterravam os ovos, o que facilitou a sua fossilização", acrescentou.
+Citado numa nota de imprensa do Parque, Simão Mateus adianta que o Plesiopharos "vai ser um fóssil de destaque na compreensão da evolução dos répteis marinhos nesta zona do Atlântico que, à altura, se estava a formar".
 
-Pela dimensão dos ninhos e pelo número de ovos, os paleontólogos "suspeitam que várias fêmeas usassem o mesmo ninho para nidificar ou que a mesma fêmea voltasse sempre ao mesmo ninho para pôr ovos".
+A exposição temporária dará a conhecer não apenas os fósseis do 'Plesiopharos moelensis', mas também a evolução dos plesiossauros e outros répteis marinhos da era dos dinossauros, as primeiras descobertas e a importância geológica da área de São Pedro de Moel.
 
-A Lourinhã foi durante "milhares de anos" usada para os dinossauros nidificarem. Em 2017, quando efetuavam ações de prospeção, três voluntários do museu encontraram uma área de concentração de cascas pretas na arriba da praia do Caniçal. Os paleontólogos começaram a escavar a meio da arriba, trabalhando pendurados por cordas, a uma altura de 17 metros da praia.
+Os achados poderão ser vistos até ao fim do verão no Dino Parque da Lourinhã, inaugurado em fevereiro de 2018 e considerado o maior museu ao ar livre da Europa, tanto em área expositiva, como em dimensão.
 
-O ninho foi escavado nas últimas três campanhas, desde 2017, tendo sido extraído um bloco rochoso a pesar uma tonelada, o qual, por sua vez, foi envolvido em gesso e serapilheira para proteger os fósseis e retirado por guindaste.
-
-O material vai ser estudado e preparado ao vivo no laboratório do Dino Parque da Lourinhã dentro de duas semanas e durante um a dois anos por Miguel Moreno Azanza, Octávio Mateus, Eduardo Puértolas-Pascual, Rute Coimbra e Alexandra Fernandes.
-
-Estes investigadores receberam 240 mil euros de financiamento da Fundação para a Ciência e Tecnologia para estudar a evolução dos ovos de dinossauros a nível mundial, sendo grande parte dos achados oriundos da Lourinhã, por "não haver lugar comparável a nível mundial". A investigação decorre em parceria com universidades dos Estados Unidos da América, Espanha e Correia do Sul.
-
-O Dino Parque prepara-se para realizar visitas às áreas onde foram feitas diversas descobertas para que os visitantes conheçam melhor as características geológicas da região.''',
-        titulo: 'Paleontólogos escavam quarto ninho de dinossauro Dinheirossaurus Lorinhanensis',
+Com 180 modelos de animais à escala real, o Dino Parque proporciona uma viagem de milhões de anos através de cinco percursos distintos: Paleozoico, Triásico, Jurássico, Cretácico e Monstros Marinhos.''',
+        titulo: 'Réptil marinho da era dos dinossauros vai ser mostrado ao público',
         visivel: true,
-        cor: Color(0xFF42b422),
-        fonte: 'Diário de Notícias'),
+        cor: Color(0xFF23b9d7),
+        fonte: 'Sic Notícias'),
     NoticiaModel(
         titulo: 'Descoberta nova espécie de dinossauro carnívoro na região Oeste',
         data: '29 de Outubro 2021',
@@ -106,29 +99,35 @@ O ‘Lusovenator santosi’ foi apelidado em homenagem a José Joaquim dos Santo
         fonte: 'Observador'),
     NoticiaModel(
         data: '9 de Agosto 2021',
-        imagem: "assets/images/not1.jpg",
+        imagem: "assets/images/not3.jpg",
         subtitulo:
-            'Fósseis de uma nova espécie de réptil marinho da era dos dinossauros, descoberto em Portugal, vão ser mostrados ao público pela primeira vez, a partir de sábado, no Dino Parque da Lourinhã, onde estão expostos até final do verão.',
+            'Um quarto ninho de dinossauro foi escavado nas arribas de uma praia da Lourinhã e deverá pertencer ao mesmo dinossauro carnívoro dos anteriores, fazendo deste o local no mundo com mais ninhos de dinossauro.',
         texto:
-            ''''O 'Plesiopharos moelensis' , uma nova espécie de réptil marinho da era dos dinossauros, que habitou a terra há cerca de 195 milhões de anos, é a estrela da nova exposição temporária do Dino Parque da Lourinhã, no distrito de Lisboa.
+            '''O paleontólogo Miguel Moreno Azanza, especialista em ninhos e ovos de dinossauros, explicou à agência Lusa que "as cascas são semelhantes às dos ovos dos outros ninhos, por isso tem quase a certeza de que o ninho pertence" ao Lourinhanosaurus antunesi, espécie de dinossauro carnívoro descoberta também neste concelho do distrito de Lisboa, motivo pelo qual foi assim batizada.
 
-Os fósseis, que estarão patentes ao público pela primeira vez, são parte do "mais antigo e completo exemplar da Península Ibérica do réptil com "uma forma que o associa facilmente à silhueta do célebre monstro do Lago Ness", divulgou o Dino Parque.
+Os quatro ninhos têm em comum o facto de terem ovos de 12 centímetros, com cascas negras de um milímetro de espessura e poros que permitem a sua identificação. Os paleontólogos suspeitam que o ninho agora escavado na praia do Caniçal, com cerca de 10 ovos, poderá ser mais antigo do que os anteriores escavados no concelho.
 
-Os fósseis foram descobertos por dois colecionadores, Victor Teixeira e António Domingos, em São Pedro de Moel, no concelho da Marinha Grande, após o que foram doados ao Museu da Lourinhã e preparados, no laboratório do Dino Parque, por uma equipa internacional de paleontólogos e geólogos ligados a várias instituições.
+Pela diversidade de ninhos encontrados, os cientistas acreditam que a Lourinhã seria o "local ideal" para os dinossauros carnívoros daquela espécie nidificarem.
 
-O trabalho, publicado na revista Acta Palaeontologica Polonica, foi liderado por Simão Mateus, Diretor Científico do Dino Parque, e teve como primeiro autor Eduardo Puértolas-Pascual, investigador da Faculdade de Ciências e Tecnologia da Universidade Nova de Lisboa.
+A Lourinhã seria uma "área de muitos rios com planícies inundadas, o que era bom para o Lourinhanosaurus antunesi nidificar", apontou Miguel Moreno Azanza, investigador da Universidade Nova de Lisboa, que, com conjunto com Octávio Mateus, da mesma universidade, coordenou as escavações organizadas pelo Museu da Lourinhã.
 
-Citado numa nota de imprensa do Parque, Simão Mateus adianta que o Plesiopharos "vai ser um fóssil de destaque na compreensão da evolução dos répteis marinhos nesta zona do Atlântico que, à altura, se estava a formar".
+"Os dinossauros aproveitavam as áreas secas para nidificar e, quando estas inundavam, enterravam os ovos, o que facilitou a sua fossilização", acrescentou.
 
-A exposição temporária dará a conhecer não apenas os fósseis do 'Plesiopharos moelensis', mas também a evolução dos plesiossauros e outros répteis marinhos da era dos dinossauros, as primeiras descobertas e a importância geológica da área de São Pedro de Moel.
+Pela dimensão dos ninhos e pelo número de ovos, os paleontólogos "suspeitam que várias fêmeas usassem o mesmo ninho para nidificar ou que a mesma fêmea voltasse sempre ao mesmo ninho para pôr ovos".
 
-Os achados poderão ser vistos até ao fim do verão no Dino Parque da Lourinhã, inaugurado em fevereiro de 2018 e considerado o maior museu ao ar livre da Europa, tanto em área expositiva, como em dimensão.
+A Lourinhã foi durante "milhares de anos" usada para os dinossauros nidificarem. Em 2017, quando efetuavam ações de prospeção, três voluntários do museu encontraram uma área de concentração de cascas pretas na arriba da praia do Caniçal. Os paleontólogos começaram a escavar a meio da arriba, trabalhando pendurados por cordas, a uma altura de 17 metros da praia.
 
-Com 180 modelos de animais à escala real, o Dino Parque proporciona uma viagem de milhões de anos através de cinco percursos distintos: Paleozoico, Triásico, Jurássico, Cretácico e Monstros Marinhos.''',
-        titulo: 'Réptil marinho da era dos dinossauros descoberto em Portugal vai ser mostrado ao público',
+O ninho foi escavado nas últimas três campanhas, desde 2017, tendo sido extraído um bloco rochoso a pesar uma tonelada, o qual, por sua vez, foi envolvido em gesso e serapilheira para proteger os fósseis e retirado por guindaste.
+
+O material vai ser estudado e preparado ao vivo no laboratório do Dino Parque da Lourinhã dentro de duas semanas e durante um a dois anos por Miguel Moreno Azanza, Octávio Mateus, Eduardo Puértolas-Pascual, Rute Coimbra e Alexandra Fernandes.
+
+Estes investigadores receberam 240 mil euros de financiamento da Fundação para a Ciência e Tecnologia para estudar a evolução dos ovos de dinossauros a nível mundial, sendo grande parte dos achados oriundos da Lourinhã, por "não haver lugar comparável a nível mundial". A investigação decorre em parceria com universidades dos Estados Unidos da América, Espanha e Correia do Sul.
+
+O Dino Parque prepara-se para realizar visitas às áreas onde foram feitas diversas descobertas para que os visitantes conheçam melhor as características geológicas da região.''',
+        titulo: 'Paleontólogos escavam quarto ninho de dinossauro Dinheirossaurus Lorinhanensis',
         visivel: true,
-        cor: Colors.blue,
-        fonte: 'Sic Notícias'),
+        cor: Color(0xFF618953),
+        fonte: 'Diário de Notícias'),
   ];
 
   String query = "";

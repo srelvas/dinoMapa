@@ -19,72 +19,95 @@ class _MenuState extends State<Menu> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      child: Container(
-        color: Color(0xFFF2F3F8),
-        child: ListView(
-          children: [
-            SizedBox(height: 50),
-            buildMenu(username: "saas", email: widget.email, auth: _googleSignIn, c: context),
-            // fazer menu
-            //curva bezier,
-          ],
-        ),
+        child: Stack(children: [
+      ClipPath(
+        clipper: MyClipper(),
+        child: Container(
+            height: 250,
+            width: double.infinity,
+            decoration: BoxDecoration(
+                image: DecorationImage(image: AssetImage('assets/images/virus.png')),
+                gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: const [Colors.red, Colors.orange]))),
       ),
-    );
+      Container(
+        child: ListView(children: [
+          SizedBox(height: 50),
+          Column(children: [
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20.0),
+              child: NameInitialsAvatar(
+                widget.email,
+                size: 100.0,
+              ),
+            ),
+            SizedBox(height: 10),
+            Text(
+              widget.email,
+            ),
+            SizedBox(height: 60),
+            ListTile(
+              contentPadding: EdgeInsets.only(left: 30),
+              leading: Icon(IconData(60981, fontFamily: 'MaterialIcons')),
+              title: Text("O teu perfil"),
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.only(left: 30),
+              leading: Icon(IconData(58173, fontFamily: 'MaterialIcons')),
+              title: Text("Sobre nós"),
+            ),
+            ListTile(
+              contentPadding: EdgeInsets.only(left: 30),
+              leading: Icon(IconData(58751, fontFamily: 'MaterialIcons')),
+              title: Text("Definições"),
+            ),
+            ListTile(
+                contentPadding: EdgeInsets.only(left: 30),
+                leading: Icon(IconData(58291, fontFamily: 'MaterialIcons')),
+                title: Text("Terminar Sessão"),
+                onTap: () async {
+                  await _googleSignIn.signOut();
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                }),
+          ]),
+        ]),
+      ),
+    ]));
   }
 }
 
-Widget buildMenu({
-  required String username, //ter q ir buscar o user name
-  required String email,
-  required GoogleSignIn auth,
-  required BuildContext c,
-}) {
-  return Column(children: [
-    ClipRRect(
-      borderRadius: BorderRadius.circular(20.0),
-      child: NameInitialsAvatar(
-        email,
-        size: 100.0,
-      ),
-    ),
-    SizedBox(height: 10),
-    Text(email),
-    SizedBox(height: 60),
-    ListTile(
-      contentPadding: EdgeInsets.only(left: 30),
-      leading: Icon(IconData(60981, fontFamily: 'MaterialIcons')),
-      title: Text("O teu perfil"),
-      /* onTap: () async {
-          await auth.signOut();
-          Navigator.push(c, MaterialPageRoute(builder: (context) => LoginScreen()));
-        } */
-    ),
-    ListTile(
-      contentPadding: EdgeInsets.only(left: 30),
-      leading: Icon(IconData(58173, fontFamily: 'MaterialIcons')),
-      title: Text("Sobre nós"),
-      /* onTap: () async {
-          await auth.signOut();
-          Navigator.push(c, MaterialPageRoute(builder: (context) => LoginScreen()));
-        } */
-    ),
-    ListTile(
-      contentPadding: EdgeInsets.only(left: 30),
-      leading: Icon(IconData(58751, fontFamily: 'MaterialIcons')),
-      title: Text("Definições"),
-      /* onTap: () async {
-          await auth.signOut();
-          Navigator.push(c, MaterialPageRoute(builder: (context) => LoginScreen()));
-        } */
-    ),
-    ListTile(
-        contentPadding: EdgeInsets.only(left: 30),
-        leading: Icon(IconData(58291, fontFamily: 'MaterialIcons')),
-        title: Text("Terminar Sessão"),
-        onTap: () async {
-          await auth.signOut();
-          Navigator.push(c, MaterialPageRoute(builder: (context) => LoginScreen()));
-        }),
-  ]); // TODO
+class MyClipper extends CustomClipper<Path> {
+  @override
+  Path getClip(Size size) {
+    var path = Path();
+    path.lineTo(0, size.height - 50);
+    path.quadraticBezierTo(size.width / 2, size.height, size.width, size.height - 50);
+    path.lineTo(size.width, 0);
+    path.close();
+    return path;
+  }
+
+  @override
+  bool shouldReclip(CustomClipper<Path> oldClipper) {
+    return false;
+  }
 }
+
+// class MyClipper extends CustomClipper<Path> {
+//   @override
+//   Path getClip(Size size) {
+//     var path = Path();
+//     path.lineTo(0, size.height - 45);
+//     var cp = Offset(50, size.height);
+//     var ep = Offset(size.width / 2, size.height);
+//     path.quadraticBezierTo(cp.dx, cp.dy, ep.dx, ep.dy);
+//     path.lineTo(size.width, size.height);
+//     path.lineTo(size.width, 0);
+//     path.close();
+//     return path;
+//   }
+
+//   @override
+//   bool shouldReclip(CustomClipper<Path> oldClipper) {
+//     return false;
+//   }
+// }

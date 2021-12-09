@@ -76,87 +76,103 @@ class _MapaState extends State<Mapa> {
   Widget build(BuildContext context) {
     return SafeArea(
         child: Scaffold(
-            backgroundColor: Color(0xFF81A8E7),
-            appBar: AppBar(
-              actions: [
-                Padding(
-                  padding: EdgeInsets.only(top: 15, left: 220),
-                  child: Text(
-                    "Dino Mapa",
-                    style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
-                  ),
-                ),
-                SizedBox(width: 22),
-              ],
-              leading: IconButton(
-                icon: Icon(IconData(58332, fontFamily: 'MaterialIcons')),
-                onPressed: () => _key.currentState!.openDrawer(),
+      backgroundColor: Color(0xFF81A8E7),
+      appBar: AppBar(
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(top: 15, left: 220),
+            child: Text(
+              "Dino Mapa",
+              style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
+            ),
+          ),
+          SizedBox(width: 22),
+        ],
+        leading: IconButton(
+          icon: Icon(IconData(58332, fontFamily: 'MaterialIcons')),
+          onPressed: () => _key.currentState!.openDrawer(),
+        ),
+      ),
+      drawer: Menu(widget.email),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 20, right: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 15, bottom: 5),
+              child: SearchBarN(
+                onChanged: search,
+                text: query,
+                titulo: "Procura por tema ou data",
               ),
             ),
-            key: _key,
-            drawer: Menu(widget.email),
-            body: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 15, bottom: 5),
-                  child: SearchBarN(
-                    onChanged: search,
-                    text: query,
-                    titulo: "Procura por nome ou localização",
-                  ),
-                ),
-                Center(
-                  child: SizedBox(
-                    height: 525,
-                    child: SfMaps(
-                      layers: [
-                        MapShapeLayer(
-                          loadingBuilder: (BuildContext context) {
-                            return SizedBox(
-                              height: 25,
-                              width: 25,
-                              child: const CircularProgressIndicator(
-                                strokeWidth: 3,
-                              ),
-                            );
-                          },
-                          source: _mapSource,
-                          tooltipSettings: MapTooltipSettings(
-                            color: Colors.red,
-                          ),
-                          initialMarkersCount: dinos.length,
-                          markerTooltipBuilder: (BuildContext context, int index) {
-                            return Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Text(dinos2.elementAt(index) != null ? dinos2[index].nome : "", style: TextStyle(color: Colors.white, fontSize: 15)));
-                          },
-                          markerBuilder: (BuildContext context, int index) {
-                            return MapMarker(
-                                latitude: dinos2[index].lat,
-                                longitude: dinos2[index].long,
-                                size: Size(_markerSize, _markerSize * 2),
-                                child: GestureDetector(
-                                  onDoubleTap: () {
-                                    Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) => DinoSelecionado(
-                                                  index: index,
-                                                )));
-                                  },
-                                  child: Icon(
-                                    Icons.location_on,
-                                    color: Colors.red,
-                                  ),
-                                ));
-                          },
-                        ),
-                      ],
+            //SearchWidget(text: query, onChanged: search, hintText: 'Filtra por dinossauro ou por data'),
+            Expanded(child: Center(child: IconButton(icon: Icon(
+      Icons.favorite), onPressed: () { 
+        Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DinoSelecionado(index: 1),
                     ),
-                  ),
-                ),
-              ],
-            )));
+                  );
+       },))),
+          ],
+        ),
+      ),
+      key: _key,
+      // Center(
+      //   child: SizedBox(
+      //     height: 525,
+      //     child: SfMaps(
+      //       layers: [
+      //         MapShapeLayer(
+      //           loadingBuilder: (BuildContext context) {
+      //             return SizedBox(
+      //               height: 25,
+      //               width: 25,
+      //               child: const CircularProgressIndicator(
+      //                 strokeWidth: 3,
+      //               ),
+      //             );
+      //           },
+      //           source: _mapSource,
+      //           tooltipSettings: MapTooltipSettings(
+      //             color: Colors.red,
+      //           ),
+      //           initialMarkersCount: dinos.length,
+      //           markerTooltipBuilder: (BuildContext context, int index) {
+      //             return Padding(
+      //                 padding: const EdgeInsets.all(8.0),
+      //                 child: Text(dinos2.elementAt(index) != null ? dinos2[index].nome : "",
+      //                     style: TextStyle(color: Colors.white, fontSize: 15)));
+      //           },
+      //           markerBuilder: (BuildContext context, int index) {
+      //             return MapMarker(
+      //                 latitude: dinos2[index].lat,
+      //                 longitude: dinos2[index].long,
+      //                 size: Size(_markerSize, _markerSize * 2),
+      //                 child: GestureDetector(
+      //                   onDoubleTap: () {
+      //                     Navigator.push(
+      //                         context,
+      //                         MaterialPageRoute(
+      //                             builder: (context) => DinoSelecionado(
+      //                                   index: index,
+      //                                 )));
+      //                   },
+      //                   child: Icon(
+      //                     Icons.location_on,
+      //                     color: Colors.red,
+      //                   ),
+      //                 ));
+      //           },
+      //         ),
+      //       ],
+      //     ),
+      //   ),
+      // ),
+    ));
   }
 
   void search(String query) {
@@ -177,4 +193,3 @@ class _MapaState extends State<Mapa> {
 
 // TODO: https://pub.dev/packages/syncfusion_flutter_maps#get-the-demo-application
 // https://github.com/syncfusion/flutter-examples/blob/master/lib/samples/maps/shape_layer/zooming/zooming.dart
-

@@ -34,7 +34,7 @@ class _NoticiasExpandedState extends State<NoticiasExpanded> {
           ),
           onPressed: () => Navigator.pop(context),
         ),
-      ), 
+      ),
       backgroundColor: Color(0xFFF2F3F8),
       body: Padding(
         padding: const EdgeInsets.only(left: 30, right: 30),
@@ -42,14 +42,19 @@ class _NoticiasExpandedState extends State<NoticiasExpanded> {
           child: Column(
             children: [
               SizedBox(height: 10),
-              Row(mainAxisAlignment: MainAxisAlignment.end, children: [
-                Text( widget.model.fonte, style: TextStyle(color: Colors.grey[700], fontSize: 10)),
-              ],),
-              SizedBox(height: 0),
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: Image(image: AssetImage(widget.model.imagem)),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(widget.model.fonte, style: TextStyle(color: Colors.grey[700], fontSize: 10)),
+                ],
               ),
+              SizedBox(height: 0),
+              Container(
+                  height: 180,
+                  decoration: BoxDecoration(
+                      boxShadow: kElevationToShadow[6],
+                      borderRadius: BorderRadius.circular(10),
+                      image: DecorationImage(fit: BoxFit.fill, image: AssetImage(widget.model.imagem)))),
               SizedBox(height: 12),
               Text(
                 widget.model.titulo,
@@ -68,7 +73,7 @@ class _NoticiasExpandedState extends State<NoticiasExpanded> {
                 textAlign: TextAlign.left,
                 style: TextStyle(fontSize: 13),
               ),
-               SizedBox(height: 15),
+              SizedBox(height: 15),
               /*Column(
                 children: [
                   Expanded(

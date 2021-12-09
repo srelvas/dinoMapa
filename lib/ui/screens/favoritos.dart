@@ -18,6 +18,7 @@ class Favoritos extends StatefulWidget {
 class _FavoritosState extends State<Favoritos> {
   late List<DinoModel> favs;
   late List<DinoModel> favs2;
+  late List<DinoModel> todos;
 
   String query = "";
 
@@ -28,6 +29,7 @@ class _FavoritosState extends State<Favoritos> {
 
   @override
   void didChangeDependencies() {
+    todos = Provider.of<DinoStore>(context).todos;
     favs = Provider.of<DinoStore>(context).favoritos;
     favs2 = [...favs];
     super.didChangeDependencies();
@@ -50,10 +52,7 @@ class _FavoritosState extends State<Favoritos> {
         ],
       ),
       backgroundColor: Color(0xFFF2F3F8),
-      body: //Center(child: Text("FAVORITOS", style: TextStyle(color: Colors.red, fontSize: 30))));
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
+      body: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
         Padding(
           padding: const EdgeInsets.only(top: 15, right: 20),
           child: SearchBarN(
@@ -74,7 +73,7 @@ class _FavoritosState extends State<Favoritos> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => DinoSelecionado(index: index),
+                      builder: (context) => DinoSelecionado(index: todos.indexOf(favs2[index])),
                     ),
                   );
                 },
@@ -84,17 +83,16 @@ class _FavoritosState extends State<Favoritos> {
             ),
           ),
         )
-        // TODO: SE TIVER TEMPO TRANSFORMAR EM SLIDER
       ]),
     );
   }
 
   void search(String query) {
     final l = favs.where((nModel) {
-      final titulo = nModel.nome.toLowerCase();
+      final nome = nModel.nome.toLowerCase();
       final searchQ = query.toLowerCase();
 
-      return titulo.contains(searchQ);
+      return nome.contains(searchQ);
     }).toList();
 
     setState(() {

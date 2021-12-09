@@ -30,7 +30,7 @@ class _SearchBarState extends State<SearchBar> {
               padding: EdgeInsets.only(left: 16),
               child: !_folded
                   ? TextField(
-                    style: TextStyle(fontSize: 14),
+                      style: TextStyle(fontSize: 14),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(bottom: 15),
                           hintText: "Procura pelo nome",

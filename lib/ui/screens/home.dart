@@ -36,92 +36,92 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-            child: Scaffold(
-          body: DefaultTabController(
-            initialIndex: 2,
-            length: 5,
-            child: Stack(
-              children: <Widget>[
-                Scaffold(
-                  bottomNavigationBar: Container(
-                    decoration: BoxDecoration(color: Colors.white, boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 15.0,
-                      )
-                    ]),
-                    child: TabBar(
-                      labelPadding: EdgeInsets.symmetric(horizontal: 2.0),
-                      tabs: <Widget>[
-                        Tab(
-                          height: 52,
-                          text: "Favoritos",
-                          icon: Icon(
-                            MyFlutterApp.star_2,
-                            size: 30,
-                          ),
-                          iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
-                        ),
-                        Tab(
-                          height: 52,
-                          text: "Noticias",
-                          icon: Icon(
-                            MyFlutterApp.feed,
-                            size: 30,
-                          ),
-                          iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
-                        ),
-                        Tab(
-                          height: 52,
-                          text: "Mapa",
-                          icon: Icon(
-                            MyFlutterApp.mapa,
-                            size: 30,
-                          ),
-                          iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
-                        ),
-                        Tab(
-                          text: "Galeria",
-                          height: 52,
-                          icon: Icon(
-                            MyFlutterApp.galeria,
-                            size: 31,
-                          ),
-                          iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
-                        ),
-                        Tab(
-                          text: "Museus",
-                          height: 52,
-                          icon: Icon(
-                            MyFlutterApp.museu,
-                            size: 29,
-                          ),
-                          iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
-                        ),
-                      ],
-                      labelColor: Theme.of(context).primaryColor,
-                      labelStyle: TextStyle(
-                        fontSize: 10,
-                        fontFamily: 'Hammersmith',
+        child: Scaffold(
+      body: DefaultTabController(
+        initialIndex: 2,
+        length: 5,
+        child: Stack(
+          children: <Widget>[
+            Scaffold(
+              bottomNavigationBar: Container(
+                decoration: BoxDecoration(color: Colors.white, boxShadow: [
+                  BoxShadow(
+                    color: Colors.black12,
+                    blurRadius: 15.0,
+                  )
+                ]),
+                child: TabBar(
+                  labelPadding: EdgeInsets.symmetric(horizontal: 2.0),
+                  tabs: <Widget>[
+                    Tab(
+                      height: 58,
+                      text: "Favoritos",
+                      icon: Icon(
+                        MyFlutterApp.star_2,
+                        size: 33,
                       ),
-                      unselectedLabelColor: Colors.grey,
-                      indicatorColor: Theme.of(context).primaryColor,
+                      iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
                     ),
+                    Tab(
+                      height: 58,
+                      text: "Noticias",
+                      icon: Icon(
+                        MyFlutterApp.feed,
+                        size: 33,
+                      ),
+                      iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
+                    ),
+                    Tab(
+                      height: 58,
+                      text: "Mapa",
+                      icon: Icon(
+                        MyFlutterApp.mapa,
+                        size: 33,
+                      ),
+                      iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
+                    ),
+                    Tab(
+                      text: "Galeria",
+                      height: 58,
+                      icon: Icon(
+                        MyFlutterApp.galeria,
+                        size: 34,
+                      ),
+                      iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
+                    ),
+                    Tab(
+                      text: "Museus",
+                      height: 58,
+                      icon: Icon(
+                        MyFlutterApp.museu,
+                        size: 32,
+                      ),
+                      iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
+                    ),
+                  ],
+                  labelColor: Theme.of(context).primaryColor,
+                  labelStyle: TextStyle(
+                    fontSize: 10,
+                    fontFamily: 'Hammersmith',
                   ),
-                  body: TabBarView(
-                    children: <Widget>[
-                      Favoritos(),
-                      Noticias(),
-                      Mapa(widget.email),
-                      Galeria(),
-                      Museus(),
-                    ],
-                  ),
+                  unselectedLabelColor: Colors.grey,
+                  indicatorColor: Theme.of(context).primaryColor,
                 ),
-              ],
+              ),
+              body: TabBarView(
+                children: <Widget>[
+                  Favoritos(),
+                  Noticias(),
+                  Mapa(widget.email),
+                  Galeria(),
+                  Museus(),
+                ],
+              ),
             ),
-          ),
-        ));
+          ],
+        ),
+      ),
+    ));
   }
 
   void onTapped(int index) {

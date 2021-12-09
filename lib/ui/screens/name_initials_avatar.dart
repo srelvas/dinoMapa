@@ -4,16 +4,13 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 const List<Color> _avatarColors = [
-  const Color(0xffE1AE23),
-  const Color(0xffD96B1C),
-  const Color(0xffFF7257),
+  const Color(0xffFA8E8E),
+  const Color(0xffa20909),
+  const Color(0xffFF8800),
   const Color(0xffEB4829),
-  const Color(0xffE679FA),
-  const Color(0xffA02CB5),
-  const Color(0xff4194B4),
+  const Color(0xff14A1B9),
+  const Color(0xff6032AF),
   const Color(0xff0589Fc),
-  const Color(0xff95DE49),
-  const Color(0xff548E16),
 ];
 
 class NameInitialsAvatar extends StatelessWidget {
