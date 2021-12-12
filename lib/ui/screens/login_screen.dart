@@ -8,6 +8,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -176,14 +177,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       height: 400,
                       width: 310,
                       decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xFFDFE2F4),
-                            spreadRadius: 1,
-                            blurRadius: 0.2,
-                            offset: Offset(0, 0),
-                          ),
-                        ],
+                        boxShadow: kElevationToShadow[4],
                         color: Color(0xFFE6E8F2),
                         borderRadius: BorderRadius.circular(10),
                       ),
@@ -247,6 +241,14 @@ class _LoginScreenState extends State<LoginScreen> {
       await _auth.signInWithCredential(credential).then((value) => {
             postDetailsToFirestore(),
             Fluttertoast.showToast(msg: "Iniciou sessão com sucesso - email: " + user.email),
+            Alert(
+              context: context,
+              title: "Iniciou sessão com sucesso - email: " + user.email,
+              style: AlertStyle(
+                isCloseButton: true,
+                isButtonVisible: false,
+              ),
+            ).show(),
           });
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(_auth.currentUser!.email!)));
     } else {
@@ -259,11 +261,18 @@ class _LoginScreenState extends State<LoginScreen> {
       try {
         await _auth.signInWithEmailAndPassword(email: email, password: password).then((uid) => {
               Fluttertoast.showToast(msg: "Iniciou sessão com sucesso - email: " + email),
+              Alert(
+                context: context,
+                title: "Iniciou sessão com sucesso - email: " + email,
+                style: AlertStyle(
+                  isCloseButton: true,
+                  isButtonVisible: false,
+                ),
+              ).show(),
               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(email))),
             });
       } on FirebaseAuthException catch (error) {
         switch (error.code) {
-          //TODO: TRADUZIR
           case "invalid-email":
             errorMessage = "Email invalido.";
             break;
@@ -277,14 +286,14 @@ class _LoginScreenState extends State<LoginScreen> {
             errorMessage = "An undefined Error happened.";
         }
         Fluttertoast.showToast(msg: errorMessage!);
-        // Alert(
-        //   context: context,
-        //   title: errorMessage!,
-        //   style: AlertStyle(
-        //     isCloseButton: false,
-        //     isButtonVisible: false,
-        //   ),
-        // ).show();
+        Alert(
+          context: context,
+          title: errorMessage!,
+          style: AlertStyle(
+            isCloseButton: true,
+            isButtonVisible: false,
+          ),
+        ).show();
         print(error.code);
       }
     }

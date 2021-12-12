@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print, unnecessary_this
 import 'package:dino_mapa/models/dinoStore.dart';
-import 'package:dino_mapa/models/model_info.dart';
 import 'package:dino_mapa/ui/widgets/favoritos_widget.dart';
 import 'package:dino_mapa/ui/widgets/search_noticias.dart';
 import 'package:flutter/material.dart';
@@ -58,7 +57,8 @@ class _FavoritosState extends State<Favoritos> {
           child: SearchBarN(
             onChanged: search,
             text: query,
-            titulo: "Procura por nome",
+            titulo: "Procura por fóssil",
+            w: 170,
           ),
         ),
         Expanded(

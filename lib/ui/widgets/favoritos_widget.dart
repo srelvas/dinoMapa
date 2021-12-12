@@ -10,24 +10,27 @@ class FavoritosWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(children: [
-      Container(
-        height: 140,
-        width: 320,
-        child: Padding(
-          padding: EdgeInsets.only(top: 6, right: 11),
-          child: Text(
-            model.nome,
-            textAlign: TextAlign.right,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
-          ),
-        ),
-        decoration: BoxDecoration(
-            boxShadow: kElevationToShadow[6],
-            image: DecorationImage(
-              image: AssetImage(model.imagemPrincipal),
-              fit: BoxFit.fill,
+      Hero(
+        tag: model.index,
+        child: Container(
+          height: 140,
+          width: 320,
+          child: Padding(
+            padding: EdgeInsets.only(top: 6, right: 11),
+            child: Text(
+              model.nome,
+              textAlign: TextAlign.right,
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
             ),
-            borderRadius: BorderRadius.all(Radius.circular(10))),
+          ),
+          decoration: BoxDecoration(
+              boxShadow: kElevationToShadow[6],
+              image: DecorationImage(
+                image: AssetImage(model.imagemPrincipal),
+                fit: BoxFit.fill,
+              ),
+              borderRadius: BorderRadius.all(Radius.circular(10))),
+        ),
       ),
     ]);
   }

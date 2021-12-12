@@ -171,6 +171,7 @@ O Dino Parque prepara-se para realizar visitas às áreas onde foram feitas dive
               ),
             ),
             //SearchWidget(text: query, onChanged: search, hintText: 'Filtra por dinossauro ou por data'),
+            SizedBox(height: 3),
             Expanded(
               child: ListView.separated(
                 separatorBuilder: (BuildContext context, int index) => SizedBox(

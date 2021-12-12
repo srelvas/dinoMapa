@@ -31,6 +31,7 @@ class DinoModel {
     required this.intervalo,
     this.ordem,
     required this.isfavorito,
+    required this.dieta,
     required this.lat,
     required this.long,
     required this.sitioDescoberta,
@@ -40,6 +41,8 @@ class DinoModel {
     required this.imagem1,
     required this.tituloImagem2,
     required this.imagem2,
+    required this.taxonomyEvolutionImage,
+    required this.isDino,
   });
 
   final String nome;
@@ -48,6 +51,7 @@ class DinoModel {
   final String filo;
   final String intervalo;
   bool isfavorito;
+  final String dieta;
   final double lat;
   final double long;
   final String sitioDescoberta;
@@ -57,4 +61,6 @@ class DinoModel {
   final String imagem1;
   final String tituloImagem2;
   final String imagem2;
+  final String taxonomyEvolutionImage;
+  bool isDino;
 }

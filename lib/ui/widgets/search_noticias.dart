@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_final_fields, avoid_unnecessary_containers
+// ignore_for_file: prefer_const_constructors_in_immutables, prefer_const_constructors, prefer_final_fields, avoid_unnecessary_containers, prefer_if_null_operators
 
 import 'package:flutter/material.dart';
 
@@ -6,12 +6,14 @@ class SearchBarN extends StatefulWidget {
   final String text;
   final ValueChanged<String> onChanged;
   final String titulo;
+  final double? w;
 
   SearchBarN({
     Key? key,
     required this.text,
     required this.onChanged,
     required this.titulo,
+    this.w,
   }) : super(key: key);
 
   @override
@@ -26,7 +28,7 @@ class _SearchBarNState extends State<SearchBarN> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 400),
-      width: _folded ? 32 : 245,
+      width: _folded ? 32 : (widget.w == null ? 218 : widget.w),
       height: 32,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
@@ -68,10 +70,10 @@ class _SearchBarNState extends State<SearchBarN> {
                       ? GestureDetector(
                           child: Icon(Icons.close, size: 18, color: Colors.orange),
                           onTap: () {
-                            controller.clear();
-                            widget.onChanged('');
-                            _folded = !_folded;
                             FocusScope.of(context).requestFocus(FocusNode());
+                            controller.clear();
+                            widget.onChanged("");
+                            _folded = !_folded;
                           },
                         )
                       : Icon(Icons.search, size: 18, color: Colors.orange),

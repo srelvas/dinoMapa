@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, prefer_final_fields, invalid_required_positional_param
+// ignore_for_file: prefer_const_constructors, prefer_final_fields, invalid_required_positional_param, avoid_unnecessary_containers
 
 import 'package:dino_mapa/ui/screens/login_screen.dart';
 import 'package:dino_mapa/ui/screens/name_initials_avatar.dart';
@@ -26,7 +26,6 @@ class _MenuState extends State<Menu> {
             height: 250,
             width: double.infinity,
             decoration: BoxDecoration(
-                image: DecorationImage(image: AssetImage('assets/images/virus.png')),
                 gradient: LinearGradient(begin: Alignment.topRight, end: Alignment.bottomLeft, colors: const [Colors.red, Colors.orange]))),
       ),
       Container(
@@ -47,18 +46,18 @@ class _MenuState extends State<Menu> {
             SizedBox(height: 60),
             ListTile(
               contentPadding: EdgeInsets.only(left: 30),
-              leading: Icon(IconData(60981, fontFamily: 'MaterialIcons')),
-              title: Text("O teu perfil"),
+              leading: Icon(IconData(60981, fontFamily: 'MaterialIcons'), color: Colors.black26),
+              title: Text("O teu perfil", style: TextStyle(color: Colors.black26)),
             ),
             ListTile(
               contentPadding: EdgeInsets.only(left: 30),
-              leading: Icon(IconData(58173, fontFamily: 'MaterialIcons')),
-              title: Text("Sobre nós"),
+              leading: Icon(IconData(58173, fontFamily: 'MaterialIcons'), color: Colors.black26),
+              title: Text("Sobre nós", style: TextStyle(color: Colors.black26)),
             ),
             ListTile(
               contentPadding: EdgeInsets.only(left: 30),
-              leading: Icon(IconData(58751, fontFamily: 'MaterialIcons')),
-              title: Text("Definições"),
+              leading: Icon(IconData(58751, fontFamily: 'MaterialIcons'), color: Colors.black26),
+              title: Text("Definições", style: TextStyle(color: Colors.black26)),
             ),
             ListTile(
                 contentPadding: EdgeInsets.only(left: 30),

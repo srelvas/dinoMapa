@@ -1,9 +1,5 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, prefer_const_constructors_in_immutables, invalid_required_positional_param
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, prefer_const_constructors_in_immutables, invalid_required_positional_param, unused_field
 
-import 'package:animations/animations.dart';
-import 'package:dino_mapa/data/dino_data.dart';
-import 'package:dino_mapa/models/dinoStore.dart';
-import 'package:dino_mapa/models/galeriaStore.dart';
 import 'package:dino_mapa/ui/screens/favoritos.dart';
 import 'package:dino_mapa/ui/screens/noticias.dart';
 import 'package:dino_mapa/ui/screens/galeria.dart';
@@ -11,7 +7,6 @@ import 'package:dino_mapa/ui/screens/mapa.dart';
 import 'package:dino_mapa/ui/screens/museus.dart';
 import 'package:dino_mapa/ui/screens/my_flutter_app_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class Home extends StatefulWidget {
   final String email;

@@ -1,13 +1,11 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:dino_mapa/data/dino_data.dart';
 import 'package:dino_mapa/models/dinoStore.dart';
 import 'package:dino_mapa/models/galeriaStore.dart';
-import 'package:dino_mapa/ui/screens/home.dart';
 import 'package:dino_mapa/ui/screens/login_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 Future<void> main() async {

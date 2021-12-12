@@ -16,7 +16,7 @@ class _SearchBarState extends State<SearchBar> {
   Widget build(BuildContext context) {
     return AnimatedContainer(
       duration: Duration(milliseconds: 400),
-      width: _folded ? 32 : 170,
+      width: _folded ? 32 : 168,
       height: 32,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
@@ -33,7 +33,7 @@ class _SearchBarState extends State<SearchBar> {
                       style: TextStyle(fontSize: 14),
                       decoration: InputDecoration(
                           contentPadding: EdgeInsets.only(bottom: 15),
-                          hintText: "Procura pelo nome",
+                          hintText: "Procura pelo fóssil",
                           hintStyle: TextStyle(color: Colors.orange[300], fontSize: 14),
                           border: InputBorder.none),
                     )

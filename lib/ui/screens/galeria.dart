@@ -13,8 +13,9 @@ import 'package:provider/provider.dart';
 import 'package:intl/intl.dart';
 
 class Galeria extends StatefulWidget {
-  const Galeria({Key? key}) : super(key: key);
+  Galeria({Key? key, this.leading}) : super(key: key);
 
+  String? leading;
   @override
   _GaleriaState createState() => _GaleriaState();
 }
@@ -35,6 +36,13 @@ class _GaleriaState extends State<Galeria> {
     return Consumer<GaleriaStore>(
         builder: (context, galeriaStore, child) => Scaffold(
               appBar: AppBar(
+                leading: widget.leading != null
+                    ? IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        icon: Icon(Icons.arrow_back))
+                    : null,
                 automaticallyImplyLeading: false,
                 actions: [
                   Padding(
@@ -286,9 +294,9 @@ class _GaleriaState extends State<Galeria> {
                                                   ),
                                                   Column(
                                                     children: [
-                                                      SizedBox(height: 8),
+                                                      SizedBox(height: 5),
                                                       IconButton(
-                                                        icon: Icon(Icons.save_alt, color: Colors.black),
+                                                        icon: Icon(Icons.check, color: Colors.grey[600]),
                                                         onPressed: () {
                                                           setState(() {
                                                             galeriaStore.setDescricao(index, textController.text);

@@ -2,8 +2,12 @@
 
 import 'dart:async';
 
+import 'package:dino_mapa/models/chip.dart';
 import 'package:dino_mapa/models/dinoStore.dart';
+import 'package:dino_mapa/ui/screens/WrappedMultipleChipClasse.dart';
+import 'package:dino_mapa/ui/screens/WrappedMultipleChipFilo.dart';
 import 'package:dino_mapa/ui/screens/dino_selecionado.dart';
+import 'package:dino_mapa/ui/screens/hero_dialog_route.dart';
 import 'package:dino_mapa/ui/widgets/search_noticias.dart';
 import 'package:flutter/foundation.dart';
 
@@ -37,7 +41,7 @@ class _MapaState extends State<Mapa> {
 
   late MapShapeSource _mapSource;
 
-  final double _markerSize = 24;
+  final double _markerSize = 30;
 
   late List<DinoModel> dinos;
   late List<DinoModel> dinos2;
@@ -75,104 +79,134 @@ class _MapaState extends State<Mapa> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      backgroundColor: Color(0xFF81A8E7),
-      appBar: AppBar(
-        actions: [
-          Padding(
-            padding: EdgeInsets.only(top: 15, left: 220),
-            child: Text(
-              "Dino Mapa",
-              style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
-            ),
-          ),
-          SizedBox(width: 22),
-        ],
-        leading: IconButton(
-          icon: Icon(IconData(58332, fontFamily: 'MaterialIcons')),
-          onPressed: () => _key.currentState!.openDrawer(),
-        ),
-      ),
-      drawer: Menu(widget.email),
-      body: Padding(
-        padding: const EdgeInsets.only(left: 20, right: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
+      child: Scaffold(
+        key: _key,
+        backgroundColor: Color(0xFF81A8E7),
+        appBar: AppBar(
+          actions: [
             Padding(
-              padding: const EdgeInsets.only(top: 15, bottom: 5),
-              child: SearchBarN(
-                onChanged: search,
-                text: query,
-                titulo: "Procura por tema ou data",
+              padding: EdgeInsets.only(top: 15, left: 220),
+              child: Text(
+                "Dino Mapa",
+                style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
               ),
             ),
-            //SearchWidget(text: query, onChanged: search, hintText: 'Filtra por dinossauro ou por data'),
-            Expanded(child: Center(child: IconButton(icon: Icon(
-      Icons.favorite), onPressed: () { 
-        Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => DinoSelecionado(index: 1),
-                    ),
-                  );
-       },))),
+            SizedBox(width: 22),
           ],
+          leading: IconButton(
+            icon: Icon(IconData(58332, fontFamily: 'MaterialIcons')),
+            onPressed: () => _key.currentState!.openDrawer(),
+          ),
+        ),
+        drawer: Menu(widget.email),
+        body: Padding(
+          padding: const EdgeInsets.only(left: 20, right: 20),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 15, bottom: 5),
+                child: Row(
+                  children: [
+                    SearchBarN(
+                      onChanged: search,
+                      text: query,
+                      titulo: "Procura por fossil",
+                      w: 165,
+                    ),
+                    SizedBox(width: 20),
+                    SingleChildScrollView(
+                      child: GestureDetector(
+                          child: Hero(
+                            tag: 'filtros',
+                            child: Container(
+                              height: 30,
+                              width: 96,
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 9),
+                                    child: Icon(Icons.filter_list_alt, color: Colors.blue),
+                                  ),
+                                  SizedBox(width: 10),
+                                  Text("Filtros", style: TextStyle(fontSize: 13)),
+                                ],
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                boxShadow: kElevationToShadow[4],
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          ),
+                          onTap: () {
+                            Navigator.of(context).push(HeroDialogRoute(builder: (context) {
+                              return Filtros();
+                            }));
+                          }),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: SizedBox(
+                    height: 600,
+                    child: SfMaps(
+                      layers: [
+                        MapShapeLayer(
+                          loadingBuilder: (BuildContext context) {
+                            return SizedBox(
+                              height: 25,
+                              width: 25,
+                              child: const CircularProgressIndicator(
+                                strokeWidth: 3,
+                              ),
+                            );
+                          },
+                          source: _mapSource,
+                          tooltipSettings: MapTooltipSettings(
+                            color: Colors.orange[400],
+                          ),
+                          initialMarkersCount: dinos.length,
+                          markerTooltipBuilder: (BuildContext context, int index) {
+                            return Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Text(dinos2[index].nome, style: TextStyle(color: Colors.white, fontSize: 15)));
+                          },
+                          markerBuilder: (BuildContext context, int index) {
+                            return MapMarker(
+                                latitude: dinos2[index].lat,
+                                longitude: dinos2[index].long,
+                                size: Size(30, 30),
+                                child: GestureDetector(
+                                  onDoubleTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => DinoSelecionado(
+                                          index: index,
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                  child: Icon(
+                                    Icons.location_on,
+                                    color: dinos2[index].isDino ? Colors.red : Colors.blue,
+                                  ),
+                                ));
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
-      key: _key,
-      // Center(
-      //   child: SizedBox(
-      //     height: 525,
-      //     child: SfMaps(
-      //       layers: [
-      //         MapShapeLayer(
-      //           loadingBuilder: (BuildContext context) {
-      //             return SizedBox(
-      //               height: 25,
-      //               width: 25,
-      //               child: const CircularProgressIndicator(
-      //                 strokeWidth: 3,
-      //               ),
-      //             );
-      //           },
-      //           source: _mapSource,
-      //           tooltipSettings: MapTooltipSettings(
-      //             color: Colors.red,
-      //           ),
-      //           initialMarkersCount: dinos.length,
-      //           markerTooltipBuilder: (BuildContext context, int index) {
-      //             return Padding(
-      //                 padding: const EdgeInsets.all(8.0),
-      //                 child: Text(dinos2.elementAt(index) != null ? dinos2[index].nome : "",
-      //                     style: TextStyle(color: Colors.white, fontSize: 15)));
-      //           },
-      //           markerBuilder: (BuildContext context, int index) {
-      //             return MapMarker(
-      //                 latitude: dinos2[index].lat,
-      //                 longitude: dinos2[index].long,
-      //                 size: Size(_markerSize, _markerSize * 2),
-      //                 child: GestureDetector(
-      //                   onDoubleTap: () {
-      //                     Navigator.push(
-      //                         context,
-      //                         MaterialPageRoute(
-      //                             builder: (context) => DinoSelecionado(
-      //                                   index: index,
-      //                                 )));
-      //                   },
-      //                   child: Icon(
-      //                     Icons.location_on,
-      //                     color: Colors.red,
-      //                   ),
-      //                 ));
-      //           },
-      //         ),
-      //       ],
-      //     ),
-      //   ),
-      // ),
-    ));
+    );
   }
 
   void search(String query) {
@@ -191,5 +225,130 @@ class _MapaState extends State<Mapa> {
   }
 }
 
-// TODO: https://pub.dev/packages/syncfusion_flutter_maps#get-the-demo-application
-// https://github.com/syncfusion/flutter-examples/blob/master/lib/samples/maps/shape_layer/zooming/zooming.dart
+class Filtros extends StatefulWidget {
+  const Filtros({Key? key}) : super(key: key);
+
+  @override
+  State<Filtros> createState() => _FiltrosState();
+}
+
+class _FiltrosState extends State<Filtros> {
+   double _value = 0.0;
+  
+  List<String> intervalos = [
+    'Silurian',
+    'Tithonian',
+    'Kimmeridgian',
+    'Valanginian',
+  ];
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Hero(
+          tag: 'filtros',
+          child: Material(
+            borderRadius: BorderRadius.circular(10),
+            child: SizedBox(
+              height: 615,
+              width: 350,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(
+                      padding: EdgeInsets.all(0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 18),
+                            child: Text("Filtros", style: TextStyle(fontSize: 18, color: Colors.blue)),
+                          ),
+                          Spacer(),
+                          IconButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              icon: Icon(Icons.close, color: Colors.black, size: 22))
+                        ],
+                      )),
+                  Padding(
+                    padding: EdgeInsets.only(left: 29, top: 30),
+                    child: Text("Classe"),
+                  ),
+                  Center(child: WrappedMultipleChipClasse()),
+                  SizedBox(height: 10),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 29,
+                    ),
+                    child: Text("Filo"),
+                  ),
+                  Center(child: WrappedMultipleChipFilo()),
+                  SizedBox(height: 30),
+                  Padding(
+                    padding: EdgeInsets.only(left: 29, top: 10),
+                    child: Text("Intervalo de tempo onde o fóssil viveu"),
+                  ),
+                  Center(
+                    child: SizedBox(
+                      width: 300,
+                      child: Slider(
+                        min: 0.0,
+                        max: 3.0,
+                        value: _value,
+                        divisions: 3,
+                        activeColor: Colors.orange,
+                        inactiveColor: Colors.orange[200],
+                        thumbColor: Colors.blue,
+                        label: intervalos[_value.round()],
+                        onChanged: (value) {
+                          setState(() {
+                            _value = value;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Center(
+                    child: TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(5)),
+                        width: 280,
+                        height: 35,
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(0.0),
+                            child: Text("Aplicar filtros", style: TextStyle(fontSize: 14, color: Colors.white)),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                        Navigator.pop(context);
+                      },
+                    child: Center(
+                      child: Text(
+                          "Remover todos os filtros",
+                          style: TextStyle(fontSize: 13, color: Colors.black),
+                        ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}

@@ -2,7 +2,6 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dino_mapa/models/user.dart';
-import 'package:dino_mapa/ui/screens/home.dart';
 import 'package:dino_mapa/ui/screens/login_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -235,7 +234,14 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             .createUserWithEmailAndPassword(email: email, password: password)
             .then((value) => {
                   postDetailsToFirestore(),
-                  Fluttertoast.showToast(msg: "Registo executado com sucesso!"),
+                  Alert(
+                    context: context,
+                    title: "Registo executado com sucesso!",
+                    style: AlertStyle(
+                      isCloseButton: true,
+                      isButtonVisible: false,
+                    ),
+                  ).show(),
                 })
             .catchError((e) {
           Alert(

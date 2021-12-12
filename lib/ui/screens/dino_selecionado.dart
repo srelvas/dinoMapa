@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unnecessary_new, prefer_const_constructors_in_immutables, invalid_required_positional_param
 
 import 'package:dino_mapa/models/dinoStore.dart';
+import 'package:dino_mapa/ui/screens/galeria.dart';
 import 'package:dino_mapa/ui/screens/my_flutter_app_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -28,7 +29,6 @@ class _DinoSelecionadoState extends State<DinoSelecionado> with TickerProviderSt
 
     return Consumer<DinoStore>(
         builder: (context, dinoStore, child) => Scaffold(
-              
               body: ListView(
                 children: [
                   Stack(
@@ -37,14 +37,17 @@ class _DinoSelecionadoState extends State<DinoSelecionado> with TickerProviderSt
                         height: MediaQuery.of(context).size.height,
                         color: dinoStore.todos[widget.index].isfavorito ? Theme.of(context).primaryColor : Colors.white,
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                            image: DecorationImage(
-                          colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
-                          fit: BoxFit.fill,
-                          image: AssetImage(dinoStore.todos[widget.index].imagemPrincipal),
-                        )),
-                        height: 200,
+                      Hero(
+                        tag: dinoStore.todos[widget.index].index,
+                        child: Container(
+                          decoration: BoxDecoration(
+                              image: DecorationImage(
+                            colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.5), BlendMode.darken),
+                            fit: BoxFit.fill,
+                            image: AssetImage(dinoStore.todos[widget.index].imagemPrincipal),
+                          )),
+                          height: 200,
+                        ),
                       ),
                       Positioned(
                         top: 170.0,
@@ -61,7 +64,7 @@ class _DinoSelecionadoState extends State<DinoSelecionado> with TickerProviderSt
                           child: Column(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left:8, right: 10),
+                                padding: const EdgeInsets.only(left: 8, right: 10),
                                 child: Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -76,20 +79,42 @@ class _DinoSelecionadoState extends State<DinoSelecionado> with TickerProviderSt
                                       },
                                     ),
                                     Spacer(),
-                                    Column(
-                                      children: [
-                                        SizedBox(height:12),
-                                        Text(dinoStore.todos[widget.index].nome,
-                                            style: TextStyle(fontSize: 20, color: !dinoStore.todos[widget.index].isfavorito ? Theme.of(context).primaryColor : Colors.blue[900])),
-                                        Text(dinoStore.todos[widget.index].sitioDescoberta,
-                                            style: TextStyle(fontSize: 12, color: !dinoStore.todos[widget.index].isfavorito ? Colors.grey[600] : Colors.white)),
-                                      ],
+                                    Container(
+                                      padding: EdgeInsets.only(left: 33),
+                                      child: Column(
+                                        children: [
+                                          SizedBox(height: 12),
+                                          Text(dinoStore.todos[widget.index].nome,
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: !dinoStore.todos[widget.index].isfavorito
+                                                      ? Theme.of(context).primaryColor
+                                                      : Colors.blue[900])),
+                                          Text(dinoStore.todos[widget.index].sitioDescoberta,
+                                              style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: !dinoStore.todos[widget.index].isfavorito ? Colors.grey[600] : Colors.white)),
+                                        ],
+                                      ),
                                     ),
                                     Spacer(),
                                     IconButton(
+                                      padding: EdgeInsets.only(top: 12, left: 5),
                                       icon: Icon(
-                                        !dinoStore.todos[widget.index].isfavorito ? Icons.star_outline_rounded : Icons.star_rounded ,
-                                        color: !dinoStore.todos[widget.index].isfavorito ? Colors.black :  Colors.yellow[700],
+                                        Icons.camera_alt_outlined,
+                                        color: !dinoStore.todos[widget.index].isfavorito ? Colors.black54 : Colors.blue[900],
+                                        size: 33,
+                                      ),
+                                      onPressed: () {
+                                        //
+                                        Route route = MaterialPageRoute(builder: (context) => Galeria(leading: 'sim'));
+                                        Navigator.pushReplacement(context, route);
+                                      },
+                                    ),
+                                    IconButton(
+                                      icon: Icon(
+                                        !dinoStore.todos[widget.index].isfavorito ? Icons.star_outline_rounded : Icons.star_rounded,
+                                        color: !dinoStore.todos[widget.index].isfavorito ? Colors.black54 : Colors.yellow[700],
                                         size: 40,
                                       ),
                                       onPressed: () {
@@ -115,11 +140,11 @@ class _DinoSelecionadoState extends State<DinoSelecionado> with TickerProviderSt
                                     child: Text("Evolução", style: TextStyle(fontSize: 14)),
                                   ),
                                 ],
-                                labelColor: !dinoStore.todos[widget.index].isfavorito ? Theme.of(context).primaryColor : Colors.white ,
+                                labelColor: !dinoStore.todos[widget.index].isfavorito ? Theme.of(context).primaryColor : Colors.white,
                                 labelStyle: TextStyle(
                                   fontFamily: 'Hammersmith',
                                 ),
-                                indicatorColor: !dinoStore.todos[widget.index].isfavorito ? Theme.of(context).primaryColor : Colors.white ,
+                                indicatorColor: !dinoStore.todos[widget.index].isfavorito ? Theme.of(context).primaryColor : Colors.white,
                               ),
                               Container(
                                 color: dinoStore.todos[widget.index].isfavorito ? Theme.of(context).primaryColor : Color(0xFFF2F3F8),
@@ -160,8 +185,186 @@ class _DinoSelecionadoState extends State<DinoSelecionado> with TickerProviderSt
                                         SizedBox(height: 10),
                                       ]),
                                     ),
-                                    Text("22222222222222222222222222"),
-                                    Text("333333333333333333333333333")
+                                    Container(
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          /* Text("Taxonomia"), */
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text(
+                                                "filo: ",
+                                                style: TextStyle(
+                                                  color: dinoStore.todos[widget.index].isfavorito ? Colors.orange[200] : Colors.blue[900],
+                                                ),
+                                              ),
+                                              /* Spacer(flex: 1,), */
+                                              Text(
+                                                dinoStore.todos[widget.index].filo,
+                                              )
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text(
+                                                "classe: ",
+                                                style: TextStyle(
+                                                    color:
+                                                        dinoStore.todos[widget.index].isfavorito ? Colors.orange[200] : Colors.blue[900]),
+                                              ),
+                                              Text(dinoStore.todos[widget.index].classe),
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text(
+                                                "ordem: ",
+                                                style: TextStyle(
+                                                    color:
+                                                        dinoStore.todos[widget.index].isfavorito ? Colors.orange[200] : Colors.blue[900]),
+                                              ),
+                                              Text(dinoStore.todos[widget.index].ordem ?? "Não identificado"),
+                                            ],
+                                          ),
+                                          Expanded(
+                                            child: Padding(
+                                              padding: EdgeInsets.only(top: 20),
+                                              child: Stack(
+                                                children: [
+                                                  /* ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            250.0),
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                          boxShadow:
+                                                              kElevationToShadow[
+                                                                  6]),
+                                                    ),
+                                                  ), */
+
+                                                  /*  ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            250.0),
+                                                    child: Container(
+                                                        /* decoration: BoxDecoration(
+                                                            boxShadow:
+                                                                kElevationToShadow[
+                                                                    6]), */
+                                                        color: dinoStore
+                                                                .todos[widget
+                                                                    .index]
+                                                                .isfavorito
+                                                            ? Colors.orange[600]
+                                                            : Colors.grey[500]),
+                                                  ), */
+                                                  Center(
+                                                    /* child:
+                                                    Container(
+                                                      padding: EdgeInsets.only(left:10, right:10),
+                                                      decoration: BoxDecoration(color: Colors.grey[500],
+                                                        borderRadius: BorderRadius.all(Radius.circular(100),),), */
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        /* borderRadius: BorderRadius.all(Radius.circular(50),), */
+                                                        image: DecorationImage(
+                                                          image: AssetImage("assets/images/taxonomy.png"),
+                                                        ),
+                                                      ),
+                                                      /* child: Image.asset(
+                                                          "assets/images/taxonomy.png"), */
+                                                    ),
+                                                  ),
+                                                  /* ), */
+                                                ],
+                                              ),
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                    /* Text("22222222222222222222222222"), */
+                                    Container(
+                                      child: Column(
+                                        children: [
+                                          SizedBox(
+                                            height: 10,
+                                          ),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Text(
+                                                "intervalo: ",
+                                                style: TextStyle(
+                                                    color:
+                                                        dinoStore.todos[widget.index].isfavorito ? Colors.orange[200] : Colors.blue[900]),
+                                              ),
+                                              Text(
+                                                dinoStore.todos[widget.index].intervalo,
+                                              )
+                                            ],
+                                          ),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsets.only(left: 30),
+                                                child: Text(
+                                                  "dieta: ",
+                                                  style: TextStyle(
+                                                      color:
+                                                          dinoStore.todos[widget.index].isfavorito ? Colors.orange[200] : Colors.blue[900]),
+                                                ),
+                                              ),
+                                              Text(
+                                                dinoStore.todos[widget.index].dieta,
+                                              )
+                                            ],
+                                          ),
+                                          SizedBox(
+                                            height: 20,
+                                          ),
+                                          Expanded(
+                                            child: Row(
+                                              children: [
+                                                Expanded(
+                                                  child: Center(
+                                                    child: Container(
+                                                      //padding: EdgeInsets.only(left:40, right:40),
+                                                      height: 400,
+                                                      width: 300,
+                                                      /* decoration: BoxDecoration(
+                                                        image: DecorationImage(
+                                                          image: AssetImage(dinoStore
+                                                              .todos[widget.index]
+                                                              .taxonomyEvolutionImage),
+                                                        ),
+                                                      ), */
+                                                      decoration: BoxDecoration(
+                                                        boxShadow: kElevationToShadow[6],
+                                                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                                                        image: DecorationImage(
+                                                          image: AssetImage(dinoStore.todos[widget.index].taxonomyEvolutionImage),
+                                                          fit: BoxFit.fill,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                                //),
+                                              ],
+                                            ),
+                                          )
+                                        ],
+                                      ),
+                                    )
+                                    /* Text("333333333333333333333333333") */
                                   ],
                                 ),
                               ),
