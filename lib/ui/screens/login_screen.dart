@@ -240,15 +240,6 @@ class _LoginScreenState extends State<LoginScreen> {
       final credential = GoogleAuthProvider.credential(accessToken: googleAuth.accessToken, idToken: googleAuth.idToken);
       await _auth.signInWithCredential(credential).then((value) => {
             postDetailsToFirestore(),
-            Fluttertoast.showToast(msg: "Iniciou sessão com sucesso - email: " + user.email),
-            Alert(
-              context: context,
-              title: "Iniciou sessão com sucesso - email: " + user.email,
-              style: AlertStyle(
-                isCloseButton: true,
-                isButtonVisible: false,
-              ),
-            ).show(),
           });
       Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(_auth.currentUser!.email!)));
     } else {

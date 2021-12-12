@@ -29,12 +29,12 @@ class _WrappedMultipleChipFiloState extends State<WrappedMultipleChipFilo> {
       ),
       wrapped: true,
       choiceStyle: C2ChoiceStyle(
-        color: Colors.blue[400],
+        color: Colors.blue[300],
         brightness: Brightness.dark,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       choiceActiveStyle: C2ChoiceStyle(
-        color: Colors.orange,
+        color: Colors.blue,
       ),
     );
   }

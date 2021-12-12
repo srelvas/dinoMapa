@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print
 import 'package:dino_mapa/models/model_museu.dart';
 import 'package:dino_mapa/ui/widgets/museu.dart';
+import 'package:dino_mapa/ui/widgets/search_noticias.dart';
 import 'package:flutter/material.dart';
 
 class Museus extends StatefulWidget {
@@ -25,12 +26,12 @@ Gratuito
 4,00€''',
       morada: 'R. João Luís de Moura 95, 2530-158 Lourinhã',
       interior: 'assets/images/lourinha_interior.jpg',
-      interiorColor: 0xFFecae77,
+      interiorColor: 0xFFf09f5d,
       exterior: 'assets/images/lourinha_exterior.jpg',
       horarioCompacto: '10-13h/14:30-18h',
       horario: '''De terça a domingo
 10h-13h/14h30-18h''',
-      exteriorColor: 0xFF5badd4,
+      exteriorColor: 0xFF46aae0,
       name: 'Museu da Lourinhã',
       weekdays: [
         2,
@@ -46,6 +47,31 @@ Gratuito
       horarioSaidaTarde: '18:00',
     ),
     MuseuModel(
+      numero: '+351 219238563',
+      expanded: false,
+      categorias: '''Todos:''',
+      precos: '''Entrada gratuita''',
+      morada: 'Rua do Paço, 20 2710-602 Sintra, Portugal',
+      interior: 'assets/images/sintra_interior.jpg',
+      interiorColor: 0xFF83BE65,
+      exterior: 'assets/images/sintra_exterior.jpg',
+      horarioCompacto: '10h-18h',
+      horario: '''De terça a domingo
+10h00 às 18h00''',
+      exteriorColor: 0xFFd99a62,
+      name: 'Museu de História Natural de Sintra',
+      weekdays: [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+      ],
+      horarioEntradaManha: '10:00',
+      horarioSaidaManha: '18:00',
+    ),
+    MuseuModel(
       numero: '+351 213921897',
       expanded: false,
       categorias: '''Adultos:
@@ -55,14 +81,14 @@ Famílias:''',
 3,00€
 12,50€''',
       morada: 'R. da Escola Politécnica 56, 1250-102 Lisboa',
-      interior: 'assets/images/lourinha_interior.jpg',
-      interiorColor: 0xFFecae77,
-      exterior: 'assets/images/lourinha_exterior.jpg',
+      interior: 'assets/images/museu_nacional_interior2.jpg',
+      interiorColor: 0xFFcfd1b6,
+      exterior: 'assets/images/museu_nacional_exterior.png',
       horarioCompacto: '10h-17h',
       horario: '''De terça a domingo
 10h00 às 17h00''',
-      exteriorColor: 0xFF5badd4,
-      name: 'Museu de História Natural e Ciência',
+      exteriorColor: 0xFF1E79B6,
+      name: 'Museu Nacional de História Natural e da Ciência',
       weekdays: [
         2,
         3,
@@ -75,6 +101,16 @@ Famílias:''',
       horarioSaidaManha: '17:00',
     ),
   ];
+
+  String query = "";
+
+  late List<MuseuModel> museus;
+
+  @override
+  initState() {
+    super.initState();
+    museus = lista;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -96,14 +132,23 @@ Famílias:''',
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 60),
+            Padding(
+              padding: const EdgeInsets.only(top: 15, bottom: 5),
+              child: SearchBarN(
+                onChanged: search,
+                text: query,
+                titulo: "Procura pelo nome",
+              ),
+            ),
+            SizedBox(height: 10),
             Expanded(
               child: ListView.separated(
                 separatorBuilder: (BuildContext context, int index) => SizedBox(
-                  height: 20,
+                  height: 15,
                 ),
-                itemCount: lista.length,
+                itemCount: museus.length,
                 itemBuilder: (
                   BuildContext context,
                   int index,
@@ -118,8 +163,13 @@ Famílias:''',
                     //     ),
                     //   );
                     // },
-                    /*child: */ MuseuWidget(
-                  model: lista[index],
+                    /*child: */ Column(
+                  children: [
+                    MuseuWidget(
+                      model: museus[index],
+                    ),
+                    SizedBox(height: index == lista.length - 1 ? 20 : 0)
+                  ],
                 ),
               ),
             ),
@@ -131,5 +181,19 @@ Famílias:''',
     // para cada elemento da lista view fazer container com imagem, titulo e separador para o proximo
     // para cada elemnto da lista cria um MuseuWidget(model)
     // list view
+  }
+
+  void search(String query) {
+    final l = lista.where((nModel) {
+      final titulo = nModel.name.toLowerCase();
+      final searchQ = query.toLowerCase();
+
+      return titulo.contains(searchQ);
+    }).toList();
+
+    setState(() {
+      this.query = query;
+      this.museus = l;
+    });
   }
 }

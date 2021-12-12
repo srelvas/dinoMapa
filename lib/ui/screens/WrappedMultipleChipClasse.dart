@@ -17,7 +17,7 @@ class _WrappedMultipleChipClasseState extends State<WrappedMultipleChipClasse> {
     'Ornithischia',
     'Gastropoda',
     'Sauropsida'
-    'Bivalvia'
+        'Bivalvia'
   ];
 
   @override
@@ -37,7 +37,7 @@ class _WrappedMultipleChipClasseState extends State<WrappedMultipleChipClasse> {
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       choiceActiveStyle: C2ChoiceStyle(
-        color: Colors.blue,
+        color: Colors.orange,
       ),
     );
   }

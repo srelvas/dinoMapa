@@ -234,14 +234,6 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             .createUserWithEmailAndPassword(email: email, password: password)
             .then((value) => {
                   postDetailsToFirestore(),
-                  Alert(
-                    context: context,
-                    title: "Registo executado com sucesso!",
-                    style: AlertStyle(
-                      isCloseButton: true,
-                      isButtonVisible: false,
-                    ),
-                  ).show(),
                 })
             .catchError((e) {
           Alert(

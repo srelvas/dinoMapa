@@ -99,7 +99,7 @@ O ‘Lusovenator santosi’ foi apelidado em homenagem a José Joaquim dos Santo
         fonte: 'Observador'),
     NoticiaModel(
         data: '9 de Agosto 2021',
-        imagem: "assets/images/not3.jpg",
+        imagem: "assets/images/dino_dinheirosaurus.jpeg",
         subtitulo:
             'Um quarto ninho de dinossauro foi escavado nas arribas de uma praia da Lourinhã e deverá pertencer ao mesmo dinossauro carnívoro dos anteriores, fazendo deste o local no mundo com mais ninhos de dinossauro.',
         texto:
@@ -126,7 +126,7 @@ Estes investigadores receberam 240 mil euros de financiamento da Fundação para
 O Dino Parque prepara-se para realizar visitas às áreas onde foram feitas diversas descobertas para que os visitantes conheçam melhor as características geológicas da região.''',
         titulo: 'Paleontólogos escavam quarto ninho de dinossauro Dinheirossaurus Lorinhanensis',
         visivel: true,
-        cor: Color(0xFF618953),
+        cor: Color(0xFF456E70),
         fonte: 'Diário de Notícias'),
   ];
 

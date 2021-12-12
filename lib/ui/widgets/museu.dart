@@ -24,6 +24,7 @@ class MuseuWidget extends StatefulWidget {
 class _MuseuWidgetState extends State<MuseuWidget> {
   @override
   Widget build(BuildContext context) {
+    var value = paddingText(widget.model);
     return Card(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
       child: Column(
@@ -70,12 +71,12 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 4.0, bottom: 4.0),
+                      padding: const EdgeInsets.only(top: 4.0, bottom: 4.0, left: 10, right: 10),
                       child: Text(
                         widget.model.name,
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w500,
                         ),
                         textAlign: TextAlign.center,
                       ),
@@ -87,7 +88,7 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                 children: [
                   Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.only(top: 175),
+                      padding: EdgeInsets.only(top: value),
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.only(
@@ -98,8 +99,8 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                             begin: Alignment.centerLeft,
                             end: Alignment.centerRight,
                             colors: [
-                              Color(widget.model.exteriorColor).withOpacity(0.7),
-                              Color(widget.model.interiorColor).withOpacity(0.7)
+                              Color(widget.model.exteriorColor).withOpacity(0.75),
+                              Color(widget.model.interiorColor).withOpacity(0.75)
                             ],
                           ),
                         ),
@@ -222,12 +223,17 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                                         ),
                                       ),
                                       onTap: () {
-                                        Fluttertoast.showToast(msg: 'Não foi possivel encontrar direções para a morada ' + widget.model.morada);
+                                        Fluttertoast.showToast(
+                                            msg: 'Não foi possivel encontrar direções para a morada ' + widget.model.morada);
                                         Alert(
                                           context: context,
                                           title: 'Não foi possivel encontrar direções para a morada: ' + widget.model.morada,
                                           style: AlertStyle(
-                                            titleStyle: const TextStyle( fontSize: 17, color: Colors.black, fontWeight: FontWeight.w300, fontStyle: FontStyle.normal),
+                                            titleStyle: const TextStyle(
+                                                fontSize: 17,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w300,
+                                                fontStyle: FontStyle.normal),
                                             isCloseButton: true,
                                             isButtonVisible: false,
                                           ),
@@ -258,7 +264,8 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                                         IconButton(
                                       padding: const EdgeInsets.all(0),
                                       icon: Icon(
-                                        Icons.expand_more_outlined, // TODO: trenaria com icon ^ e v
+                                        widget.model.expanded ? Icons.expand_less : Icons.expand_more_outlined,
+                                        // TODO: trenaria com icon ^ e v
                                         color: Colors.black,
                                         size: 22,
                                       ),
@@ -462,14 +469,13 @@ class _MuseuWidgetState extends State<MuseuWidget> {
   }
 
   _launchCaller(number) async {
-    Fluttertoast.showToast(msg: 'Não foi possível ligar a ' + number);
     Alert(
       context: context,
       title: 'Não foi possível ligar para ' + number,
       style: AlertStyle(
         isCloseButton: true,
         isButtonVisible: false,
-        titleStyle: const TextStyle( fontSize: 17, color: Colors.black, fontWeight: FontWeight.w300, fontStyle: FontStyle.normal),
+        titleStyle: const TextStyle(fontSize: 17, color: Colors.black, fontWeight: FontWeight.w300, fontStyle: FontStyle.normal),
       ),
     ).show();
   }
@@ -593,6 +599,14 @@ class _MuseuWidgetState extends State<MuseuWidget> {
       }
     } else {
       return Colors.red;
+    }
+  }
+
+  paddingText(MuseuModel model) {
+    if (model.name.length > 33) {
+      return 200.0;
+    } else {
+      return 175.0;
     }
   }
 }

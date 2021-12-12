@@ -177,7 +177,7 @@ class _DinoSelecionadoState extends State<DinoSelecionado> with TickerProviderSt
                                             borderRadius: BorderRadius.circular(10),
                                             boxShadow: kElevationToShadow[4],
                                             image: DecorationImage(
-                                              fit: BoxFit.fill,
+                                              fit: BoxFit.cover,
                                               image: AssetImage(dinoStore.todos[widget.index].imagem2),
                                             ),
                                           ),
@@ -193,8 +193,8 @@ class _DinoSelecionadoState extends State<DinoSelecionado> with TickerProviderSt
                                           ),
                                           /* Text("Taxonomia"), */
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                                             children: [
+                                              SizedBox(width: 129),
                                               Text(
                                                 "filo: ",
                                                 style: TextStyle(
@@ -202,32 +202,35 @@ class _DinoSelecionadoState extends State<DinoSelecionado> with TickerProviderSt
                                                 ),
                                               ),
                                               /* Spacer(flex: 1,), */
+                                              SizedBox(width: 80),
                                               Text(
                                                 dinoStore.todos[widget.index].filo,
                                               )
                                             ],
                                           ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                                             children: [
+                                              SizedBox(width: 108),
                                               Text(
                                                 "classe: ",
                                                 style: TextStyle(
                                                     color:
                                                         dinoStore.todos[widget.index].isfavorito ? Colors.orange[200] : Colors.blue[900]),
                                               ),
+                                              SizedBox(width: 80),
                                               Text(dinoStore.todos[widget.index].classe),
                                             ],
                                           ),
                                           Row(
-                                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                                             children: [
+                                              SizedBox(width: 108),
                                               Text(
                                                 "ordem: ",
                                                 style: TextStyle(
                                                     color:
                                                         dinoStore.todos[widget.index].isfavorito ? Colors.orange[200] : Colors.blue[900]),
                                               ),
+                                              SizedBox(width: 80),
                                               Text(dinoStore.todos[widget.index].ordem ?? "Não identificado"),
                                             ],
                                           ),
@@ -351,20 +354,18 @@ class _DinoSelecionadoState extends State<DinoSelecionado> with TickerProviderSt
                                                         borderRadius: BorderRadius.all(Radius.circular(30)),
                                                         image: DecorationImage(
                                                           image: AssetImage(dinoStore.todos[widget.index].taxonomyEvolutionImage),
-                                                          fit: BoxFit.fill,
+                                                          fit: BoxFit.fitHeight,
                                                         ),
                                                       ),
                                                     ),
                                                   ),
                                                 ),
-                                                //),
                                               ],
                                             ),
                                           )
                                         ],
                                       ),
                                     )
-                                    /* Text("333333333333333333333333333") */
                                   ],
                                 ),
                               ),

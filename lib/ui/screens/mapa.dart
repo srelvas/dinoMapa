@@ -233,15 +233,15 @@ class Filtros extends StatefulWidget {
 }
 
 class _FiltrosState extends State<Filtros> {
-   double _value = 0.0;
-  
+  double _value = 0.0;
+
   List<String> intervalos = [
+    'Não especificado',
     'Silurian',
     'Tithonian',
     'Kimmeridgian',
     'Valanginian',
   ];
-
 
   @override
   Widget build(BuildContext context) {
@@ -277,7 +277,7 @@ class _FiltrosState extends State<Filtros> {
                       )),
                   Padding(
                     padding: EdgeInsets.only(left: 29, top: 30),
-                    child: Text("Classe"),
+                    child: Text("Classe", style: TextStyle(fontSize: 16)),
                   ),
                   Center(child: WrappedMultipleChipClasse()),
                   SizedBox(height: 10),
@@ -285,25 +285,25 @@ class _FiltrosState extends State<Filtros> {
                     padding: EdgeInsets.only(
                       left: 29,
                     ),
-                    child: Text("Filo"),
+                    child: Text("Filo", style: TextStyle(fontSize: 16)),
                   ),
                   Center(child: WrappedMultipleChipFilo()),
-                  SizedBox(height: 30),
+                  SizedBox(height: 15),
                   Padding(
                     padding: EdgeInsets.only(left: 29, top: 10),
-                    child: Text("Intervalo de tempo onde o fóssil viveu"),
+                    child: Text("Intervalo de tempo", style: TextStyle(fontSize: 16)),
                   ),
                   Center(
                     child: SizedBox(
                       width: 300,
                       child: Slider(
                         min: 0.0,
-                        max: 3.0,
+                        max: 4.0,
                         value: _value,
-                        divisions: 3,
+                        divisions: 4,
                         activeColor: Colors.orange,
                         inactiveColor: Colors.orange[200],
-                        thumbColor: Colors.blue,
+                        thumbColor: Colors.blue[400],
                         label: intervalos[_value.round()],
                         onChanged: (value) {
                           setState(() {
@@ -313,7 +313,7 @@ class _FiltrosState extends State<Filtros> {
                       ),
                     ),
                   ),
-                  SizedBox(height: 20),
+                  SizedBox(height: 30),
                   Center(
                     child: TextButton(
                       onPressed: () {
@@ -334,13 +334,13 @@ class _FiltrosState extends State<Filtros> {
                   ),
                   GestureDetector(
                     onTap: () {
-                        Navigator.pop(context);
-                      },
+                      Navigator.pop(context);
+                    },
                     child: Center(
                       child: Text(
-                          "Remover todos os filtros",
-                          style: TextStyle(fontSize: 13, color: Colors.black),
-                        ),
+                        "Remover todos os filtros",
+                        style: TextStyle(fontSize: 13, color: Colors.black),
+                      ),
                     ),
                   )
                 ],
