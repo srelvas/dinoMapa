@@ -252,14 +252,6 @@ class _LoginScreenState extends State<LoginScreen> {
       try {
         await _auth.signInWithEmailAndPassword(email: email, password: password).then((uid) => {
               Fluttertoast.showToast(msg: "Iniciou sessão com sucesso - email: " + email),
-              Alert(
-                context: context,
-                title: "Iniciou sessão com sucesso - email: " + email,
-                style: AlertStyle(
-                  isCloseButton: true,
-                  isButtonVisible: false,
-                ),
-              ).show(),
               Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(email))),
             });
       } on FirebaseAuthException catch (error) {
@@ -277,14 +269,7 @@ class _LoginScreenState extends State<LoginScreen> {
             errorMessage = "An undefined Error happened.";
         }
         Fluttertoast.showToast(msg: errorMessage!);
-        Alert(
-          context: context,
-          title: errorMessage!,
-          style: AlertStyle(
-            isCloseButton: true,
-            isButtonVisible: false,
-          ),
-        ).show();
+
         print(error.code);
       }
     }

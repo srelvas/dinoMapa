@@ -206,8 +206,9 @@ class _GaleriaState extends State<Galeria> {
                                                   Future<ImageSource?> sourceI(BuildContext context) async {
                                                     return await showModalBottomSheet(
                                                         context: context,
-                                                        builder: (context) => Column(
-                                                              mainAxisSize: MainAxisSize.min,
+                                                        builder: (context) => SizedBox(
+                                                            height: 275,
+                                                            child: Column(
                                                               children: [
                                                                 ListTile(
                                                                   leading: Icon(Icons.edit, color: Theme.of(context).primaryColor),
@@ -245,7 +246,7 @@ class _GaleriaState extends State<Galeria> {
                                                                   },
                                                                 )
                                                               ],
-                                                            ));
+                                                            )));
                                                   }
 
                                                   final source = await sourceI(context);
@@ -405,30 +406,32 @@ class _GaleriaState extends State<Galeria> {
                                                         Future<ImageSource?> sourceI(BuildContext context) async {
                                                           return await showModalBottomSheet(
                                                               context: context,
-                                                              builder: (context) => Column(
-                                                                    mainAxisSize: MainAxisSize.min,
-                                                                    children: [
-                                                                      ListTile(
-                                                                        leading:
-                                                                            Icon(Icons.camera_alt, color: Theme.of(context).primaryColor),
-                                                                        title: Text(
-                                                                          'Câmara',
+                                                              builder: (context) => SizedBox(
+                                                                    height: 160,
+                                                                    child: Column(
+                                                                      children: [
+                                                                        ListTile(
+                                                                          leading:
+                                                                              Icon(Icons.camera_alt, color: Theme.of(context).primaryColor),
+                                                                          title: Text(
+                                                                            'Câmara',
+                                                                          ),
+                                                                          onTap: () {
+                                                                            Navigator.of(context).pop(ImageSource.camera);
+                                                                          },
                                                                         ),
-                                                                        onTap: () {
-                                                                          Navigator.of(context).pop(ImageSource.camera);
-                                                                        },
-                                                                      ),
-                                                                      ListTile(
-                                                                        leading:
-                                                                            Icon(Icons.photo_album, color: Theme.of(context).primaryColor),
-                                                                        title: Text(
-                                                                          'Galeria',
+                                                                        ListTile(
+                                                                          leading: Icon(Icons.photo_album,
+                                                                              color: Theme.of(context).primaryColor),
+                                                                          title: Text(
+                                                                            'Galeria',
+                                                                          ),
+                                                                          onTap: () {
+                                                                            Navigator.of(context).pop(ImageSource.gallery);
+                                                                          },
                                                                         ),
-                                                                        onTap: () {
-                                                                          Navigator.of(context).pop(ImageSource.gallery);
-                                                                        },
-                                                                      )
-                                                                    ],
+                                                                      ],
+                                                                    ),
                                                                   ));
                                                         }
 

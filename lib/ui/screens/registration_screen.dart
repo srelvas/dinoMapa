@@ -236,14 +236,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                   postDetailsToFirestore(),
                 })
             .catchError((e) {
-          Alert(
-            context: context,
-            title: e!.message,
-            style: AlertStyle(
-              isCloseButton: false,
-              isButtonVisible: false,
-            ),
-          ).show();
+          Fluttertoast.showToast(msg: e!.message);
         });
       } on FirebaseAuthException catch (error) {
         switch (error.code) {
@@ -257,14 +250,10 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
             errorMessage = "Password fraca.";
             break;
         }
-        Alert(
-          context: context,
-          title: errorMessage!,
-          style: AlertStyle(
-            isCloseButton: false,
-            isButtonVisible: false,
-          ),
-        ).show();
+        Fluttertoast.showToast(
+          msg: errorMessage!,
+        );
+
         print(error.code);
       }
     }
@@ -286,14 +275,7 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
     userModel.username = usernameEditingController.text;
 
     await firebaseFirestore.collection("users").doc(user.uid).set(userModel.toMap());
-    Alert(
-      context: context,
-      title: "Conta criada com sucesso",
-      style: AlertStyle(
-        isCloseButton: false,
-        isButtonVisible: false,
-      ),
-    ).show();
+    Fluttertoast.showToast(msg: "Conta criada com sucesso");
 
     Navigator.pushAndRemoveUntil((context), MaterialPageRoute(builder: (context) => LoginScreen()), (route) => false);
   }

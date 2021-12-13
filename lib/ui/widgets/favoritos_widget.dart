@@ -20,7 +20,7 @@ class FavoritosWidget extends StatelessWidget {
             child: Text(
               model.nome,
               textAlign: TextAlign.right,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400),
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: model.isBlack == true ? Colors.orange : Colors.black),
             ),
           ),
           decoration: BoxDecoration(

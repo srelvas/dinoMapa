@@ -151,7 +151,7 @@ class _MapaState extends State<Mapa> {
               Expanded(
                 child: Center(
                   child: SizedBox(
-                    height: 600,
+                    height: 510,
                     child: SfMaps(
                       layers: [
                         MapShapeLayer(

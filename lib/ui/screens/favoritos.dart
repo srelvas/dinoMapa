@@ -56,49 +56,49 @@ class _FavoritosState extends State<Favoritos> {
       backgroundColor: Color(0xFFF2F3F8),
       body: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
         Padding(
-                padding: const EdgeInsets.only(left: 40, top: 15, bottom: 5),
-                child: Row(
-                  children: [
-                    SearchBarN(
-                      onChanged: search,
-                      text: query,
-                      titulo: "Procura por fossil",
-                      w: 165,
-                    ),
-                    SizedBox(width: 20),
-                    SingleChildScrollView(
-                      child: GestureDetector(
-                          child: Hero(
-                            tag: 'filtros',
-                            child: Container(
-                              height: 30,
-                              width: 96,
-                              child: Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 9),
-                                    child: Icon(Icons.filter_list_alt, color: Colors.blue),
-                                  ),
-                                  SizedBox(width: 10),
-                                  Text("Filtros", style: TextStyle(fontSize: 13)),
-                                ],
-                              ),
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                boxShadow: kElevationToShadow[4],
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                            ),
-                          ),
-                          onTap: () {
-                            Navigator.of(context).push(HeroDialogRoute(builder: (context) {
-                              return Filtros();
-                            }));
-                          }),
-                    ),
-                  ],
-                ),
+          padding: const EdgeInsets.only(left: 40, top: 15, bottom: 5),
+          child: Row(
+            children: [
+              SearchBarN(
+                onChanged: search,
+                text: query,
+                titulo: "Procura por fossil",
+                w: 165,
               ),
+              SizedBox(width: 20),
+              SingleChildScrollView(
+                child: GestureDetector(
+                    child: Hero(
+                      tag: 'filtros',
+                      child: Container(
+                        height: 30,
+                        width: 96,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(left: 9),
+                              child: Icon(Icons.filter_list_alt, color: Colors.blue),
+                            ),
+                            SizedBox(width: 10),
+                            Text("Filtros", style: TextStyle(fontSize: 13)),
+                          ],
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          boxShadow: kElevationToShadow[4],
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                      ),
+                    ),
+                    onTap: () {
+                      Navigator.of(context).push(HeroDialogRoute(builder: (context) {
+                        return Filtros();
+                      }));
+                    }),
+              ),
+            ],
+          ),
+        ),
         Expanded(
           child: ListView.separated(
             padding: const EdgeInsets.only(top: 20, left: 20, right: 20),

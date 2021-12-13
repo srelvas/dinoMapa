@@ -13,10 +13,8 @@ class MuseuWidget extends StatefulWidget {
 
   final MuseuModel model;
 
-  //TODO usar Datetime.now() para ver as horas da cena
   @override
   _MuseuWidgetState createState() {
-    // TODO: implement createState
     return _MuseuWidgetState();
   }
 }
@@ -40,7 +38,6 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                     colors: [Color(widget.model.exteriorColor), Color(widget.model.interiorColor)],
                   ),
                 ),
-                /*height: 180,*/
                 child: Column(
                   children: [
                     Container(
@@ -75,7 +72,7 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                       child: Text(
                         widget.model.name,
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.w500,
                         ),
                         textAlign: TextAlign.center,
@@ -106,13 +103,8 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                         ),
                         child: Column(
                           children: [
-                            /* Expanded(
-                              child:*/
                             Row(
                               children: [
-                                /* Expanded(
-                                    child: */ /*Row(
-                                      children: [*/
                                 Expanded(
                                   child: ConstrainedBox(
                                     constraints: BoxConstraints(
@@ -223,8 +215,6 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                                         ),
                                       ),
                                       onTap: () {
-                                        Fluttertoast.showToast(
-                                            msg: 'Não foi possivel encontrar direções para a morada ' + widget.model.morada);
                                         Alert(
                                           context: context,
                                           title: 'Não foi possivel encontrar direções para a morada: ' + widget.model.morada,
@@ -256,16 +246,10 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                                       borderRadius: BorderRadius.circular(50),
                                       color: Colors.white70,
                                     ),
-                                    child: /*Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 5.0, right: 5.0, top: 1.0, bottom: 1.0),
-                                                child: Row(
-                                                  children: [*/
-                                        IconButton(
+                                    child: IconButton(
                                       padding: const EdgeInsets.all(0),
                                       icon: Icon(
                                         widget.model.expanded ? Icons.expand_less : Icons.expand_more_outlined,
-                                        // TODO: trenaria com icon ^ e v
                                         color: Colors.black,
                                         size: 22,
                                       ),
@@ -275,14 +259,10 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                                         });
                                       },
                                     ),
-                                    /*],
-                                                ),
-                                              ),*/
                                   ),
                                 ),
                               ],
                             ),
-                            /*),*/
                             if (widget.model.expanded)
                               Center(
                                 child: renderBottom(widget.model),
@@ -290,11 +270,8 @@ class _MuseuWidgetState extends State<MuseuWidget> {
                           ],
                         ),
                       ),
-                      /* ],*/
                     ),
                   ),
-                  /* ),*/
-                  /* ),*/
                 ],
               ),
             ],
@@ -415,54 +392,6 @@ class _MuseuWidgetState extends State<MuseuWidget> {
               ],
             ),
           ),
-          /*Expanded(
-            child: Column(),
-          ),
-          Expanded(
-            child: Column(),
-          ),*/
-          /*Row(
-            children: [
-              //TODO METER ISTO SEPARADO EM DUAS STRINGS, UMA DE CATEGORIAS E UMA DOS PRECOS CORRESPONDENTES
-              Expanded(
-                child: SizedBox(
-                  height: 1,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 15, bottom: 5.0),
-                child: Text(
-                  modelo.categorias,
-                  style: TextStyle(
-                    fontSize: 13,
-                  ),
-                  textAlign: TextAlign.left,
-                ),
-              ),
-
-              SizedBox(
-                width: 50,
-              ),
-
-              Text(
-                modelo.precos,
-                style: TextStyle(
-                  fontSize: 13,
-                ),
-                textAlign: TextAlign.right,
-              ),
-              Expanded(
-                child: SizedBox(
-                  height: 1,
-                ),
-              ),
-              */ /*Expanded(
-                  child: SizedBox(
-                    height: 1,
-                  ),
-                ),*/ /*
-            ],
-          ),*/
         ],
       ),
     );
@@ -603,8 +532,8 @@ class _MuseuWidgetState extends State<MuseuWidget> {
   }
 
   paddingText(MuseuModel model) {
-    if (model.name.length > 33) {
-      return 200.0;
+    if (model.name.length > 36) {
+      return 197.0;
     } else {
       return 175.0;
     }

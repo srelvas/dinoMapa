@@ -49,47 +49,47 @@ class _HomeState extends State<Home> {
                   labelPadding: EdgeInsets.symmetric(horizontal: 2.0),
                   tabs: <Widget>[
                     Tab(
-                      height: 58,
+                      height: 50,
                       text: "Favoritos",
                       icon: Icon(
                         MyFlutterApp.star_2,
-                        size: 33,
+                        size: 28,
                       ),
                       iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
                     ),
                     Tab(
-                      height: 58,
+                      height: 50,
                       text: "Noticias",
                       icon: Icon(
                         MyFlutterApp.feed,
-                        size: 33,
+                        size: 28,
                       ),
                       iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
                     ),
                     Tab(
-                      height: 58,
+                      height: 50,
                       text: "Mapa",
                       icon: Icon(
                         MyFlutterApp.mapa,
-                        size: 33,
+                        size: 28,
                       ),
                       iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
                     ),
                     Tab(
                       text: "Galeria",
-                      height: 58,
+                      height: 50,
                       icon: Icon(
                         MyFlutterApp.galeria,
-                        size: 34,
+                        size: 29,
                       ),
                       iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
                     ),
                     Tab(
                       text: "Museus",
-                      height: 58,
+                      height: 50,
                       icon: Icon(
                         MyFlutterApp.museu,
-                        size: 32,
+                        size: 28,
                       ),
                       iconMargin: const EdgeInsets.only(bottom: 4, top: 4),
                     ),

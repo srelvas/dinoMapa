@@ -43,6 +43,9 @@ class DinoModel {
     required this.imagem2,
     required this.taxonomyEvolutionImage,
     required this.isDino,
+    required this.isBlack,
+    required this.nameBig,
+    required this.dietBig,
   });
 
   final String nome;
@@ -63,4 +66,7 @@ class DinoModel {
   final String imagem2;
   final String taxonomyEvolutionImage;
   bool isDino;
+  bool isBlack;
+  bool nameBig;
+  bool dietBig;
 }
