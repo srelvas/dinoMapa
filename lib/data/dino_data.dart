@@ -108,7 +108,7 @@ final allDinos = <DinoModel>[
     imagem2: 'assets/images/Apatosaurus-size.jpg',
     taxonomyEvolutionImage: 'assets/images/Chordata_class.png',
     isDino: true,
-    isBlack: true,
+    isBlack: false,
     nameBig: true,
     dietBig: false,
   ),

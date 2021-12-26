@@ -3,20 +3,19 @@
 import 'package:chips_choice/chips_choice.dart';
 import 'package:flutter/material.dart';
 
-class WrappedMultipleChipClasse extends StatefulWidget {
+class WrappedMultipleChipIntervalo extends StatefulWidget {
   @override
-  _WrappedMultipleChipClasseState createState() => _WrappedMultipleChipClasseState();
+  _WrappedMultipleChipIntervaloState createState() => _WrappedMultipleChipIntervaloState();
 }
 
-class _WrappedMultipleChipClasseState extends State<WrappedMultipleChipClasse> {
+class _WrappedMultipleChipIntervaloState extends State<WrappedMultipleChipIntervalo> {
   List<String> tags = [];
   List<String> options = [
-    'Saurischia',
-    'Hexactinellida',
-    'Rhynchonellata',
-    'Ornithischia',
-    'Gastropoda',
-    'Sauropsida'
+    'Kimmeridgian','Valanginian',
+    'Silurian',
+    'Tithonian',
+    
+    
   ];
 
   @override
@@ -31,12 +30,12 @@ class _WrappedMultipleChipClasseState extends State<WrappedMultipleChipClasse> {
       ),
       wrapped: true,
       choiceStyle: C2ChoiceStyle(
-        color: Colors.orange[300],
+        color: Colors.green[300],
         brightness: Brightness.dark,
         borderRadius: const BorderRadius.all(Radius.circular(10)),
       ),
       choiceActiveStyle: C2ChoiceStyle(
-        color: Colors.orange,
+        color: Colors.green,
       ),
     );
   }

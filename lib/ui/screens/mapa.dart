@@ -6,6 +6,8 @@ import 'package:dino_mapa/models/chip.dart';
 import 'package:dino_mapa/models/dinoStore.dart';
 import 'package:dino_mapa/ui/screens/WrappedMultipleChipClasse.dart';
 import 'package:dino_mapa/ui/screens/WrappedMultipleChipFilo.dart';
+
+import 'package:dino_mapa/ui/screens/WrappedMultipleChipIntervalo.dart';
 import 'package:dino_mapa/ui/screens/dino_selecionado.dart';
 import 'package:dino_mapa/ui/screens/hero_dialog_route.dart';
 import 'package:dino_mapa/ui/widgets/search_noticias.dart';
@@ -202,6 +204,26 @@ class _MapaState extends State<Mapa> {
                   ),
                 ),
               ),
+              Row(children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 37),
+                      child: Icon(
+                                      Icons.location_on,
+                                      color: Colors.red, size: 25,
+                                    ),
+                    ),
+                    SizedBox(width:2),
+                    Text("Dinossauros"),
+                    SizedBox(width:50),
+                    Icon(
+                                    Icons.location_on,
+                                    color: Colors.blue, size: 25,
+                                  ),
+                    SizedBox(width:2),              
+                    Text("Outros fosseis"),
+
+                  ]),
+                  SizedBox(height:7)
             ],
           ),
         ),
@@ -225,6 +247,7 @@ class _MapaState extends State<Mapa> {
   }
 }
 
+
 class Filtros extends StatefulWidget {
   const Filtros({Key? key}) : super(key: key);
 
@@ -233,15 +256,6 @@ class Filtros extends StatefulWidget {
 }
 
 class _FiltrosState extends State<Filtros> {
-  double _value = 0.0;
-
-  List<String> intervalos = [
-    'Não especificado',
-    'Silurian',
-    'Tithonian',
-    'Kimmeridgian',
-    'Valanginian',
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -276,44 +290,37 @@ class _FiltrosState extends State<Filtros> {
                         ],
                       )),
                   Padding(
-                    padding: EdgeInsets.only(left: 29, top: 30),
+                    padding: EdgeInsets.only(left: 29, top: 12),
                     child: Text("Classe", style: TextStyle(fontSize: 16)),
                   ),
-                  Center(child: WrappedMultipleChipClasse()),
-                  SizedBox(height: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(left:30),
+                    child: WrappedMultipleChipClasse(),
+                  ),
+                  SizedBox(height: 6),
                   Padding(
                     padding: EdgeInsets.only(
                       left: 29,
                     ),
                     child: Text("Filo", style: TextStyle(fontSize: 16)),
                   ),
-                  Center(child: WrappedMultipleChipFilo()),
-                  SizedBox(height: 15),
                   Padding(
-                    padding: EdgeInsets.only(left: 29, top: 10),
+                    padding: const EdgeInsets.only(left:30),
+                    child: WrappedMultipleChipFilo(),
+                  ),
+                  SizedBox(height: 6),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      left: 29,
+                    ),
                     child: Text("Intervalo de tempo", style: TextStyle(fontSize: 16)),
                   ),
-                  Center(
-                    child: SizedBox(
-                      width: 300,
-                      child: Slider(
-                        min: 0.0,
-                        max: 4.0,
-                        value: _value,
-                        divisions: 4,
-                        activeColor: Colors.orange,
-                        inactiveColor: Colors.orange[200],
-                        thumbColor: Colors.blue[400],
-                        label: intervalos[_value.round()],
-                        onChanged: (value) {
-                          setState(() {
-                            _value = value;
-                          });
-                        },
-                      ),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.only(left:30),
+                    child: WrappedMultipleChipIntervalo(),
                   ),
-                  SizedBox(height: 30),
+                  
+                  SizedBox(height: 2),
                   Center(
                     child: TextButton(
                       onPressed: () {

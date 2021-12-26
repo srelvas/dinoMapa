@@ -95,7 +95,7 @@ class _GaleriaState extends State<Galeria> {
                     ),
                   ),
                   SizedBox(height: 10),
-                  Expanded(
+                  galeriaStore.fotos.isEmpty == false ? Expanded(
                     child: ListView.separated(
                       shrinkWrap: true,
                       separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 10.0),
@@ -320,11 +320,11 @@ class _GaleriaState extends State<Galeria> {
                         ],
                       ),
                     ),
-                  ),
-                  SizedBox(height: 10),
+                  ): SizedBox(),
+                  SizedBox(height: galeriaStore.fotosNE.isEmpty ? 0 : 10),
                   Padding(
-                    padding: const EdgeInsets.only(left: 40),
-                    child: Row(
+                    padding: EdgeInsets.only(left: galeriaStore.fotosNE.isEmpty ? 0 : 40),
+                    child: galeriaStore.fotosNE.isEmpty ? null : Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Padding(
@@ -350,8 +350,8 @@ class _GaleriaState extends State<Galeria> {
                       ],
                     ),
                   ),
-                  SizedBox(height: 10),
-                  Expanded(
+                  SizedBox(height:  galeriaStore.fotosNE.isEmpty ? 0 : 10),
+                 galeriaStore.fotosNE.isEmpty == false ? Expanded(
                     child: ListView.separated(
                       shrinkWrap: true,
                       separatorBuilder: (BuildContext context, int index) => const SizedBox(height: 10.0),
@@ -466,7 +466,7 @@ class _GaleriaState extends State<Galeria> {
                         ],
                       ),
                     ),
-                  ),
+                  ) : SizedBox(),
                 ],
               ),
             ));

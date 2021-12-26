@@ -123,10 +123,12 @@ O material vai ser estudado e preparado ao vivo no laboratório do Dino Parque d
 
 Estes investigadores receberam 240 mil euros de financiamento da Fundação para a Ciência e Tecnologia para estudar a evolução dos ovos de dinossauros a nível mundial, sendo grande parte dos achados oriundos da Lourinhã, por "não haver lugar comparável a nível mundial". A investigação decorre em parceria com universidades dos Estados Unidos da América, Espanha e Correia do Sul.
 
-O Dino Parque prepara-se para realizar visitas às áreas onde foram feitas diversas descobertas para que os visitantes conheçam melhor as características geológicas da região.''',
+O Dino Parque prepara-se para realizar visitas às áreas onde foram feitas diversas descobertas para que os visitantes conheçam melhor as características geológicas da região.
+
+''',
         titulo: 'Paleontólogos escavam quarto ninho de dinossauro Dinheirossaurus Lorinhanensis',
         visivel: true,
-        cor: Color(0xFF456E70),
+        cor: Color(0xFF83c6c9),
         fonte: 'Diário de Notícias'),
   ];
 
