@@ -51,13 +51,24 @@ class _FavoritosState extends State<Favoritos> {
               style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
             ),
           ),
-          SizedBox(width: 22),
+          SizedBox(width: 10),
+          GestureDetector(
+              child: Hero(
+                tag: 'faq',
+                child: Icon(Icons.help, size: 32, color: Colors.white),
+              ),
+              onTap: () {
+                Navigator.of(context).push(HeroDialogRoute(builder: (context) {
+                  return FAQ();
+                }));
+              }),
+          SizedBox(width: 10),
         ],
       ),
       backgroundColor: Color(0xFFF2F3F8),
       body: Column(crossAxisAlignment: CrossAxisAlignment.end, children: [
         Padding(
-          padding: const EdgeInsets.only(left: 40, top: 15, bottom: 5),
+          padding: const EdgeInsets.only(left: 36, top: 15, bottom: 5),
           child: Row(
             children: [
               SearchBarN(
@@ -149,7 +160,6 @@ class Filtros extends StatefulWidget {
 }
 
 class _FiltrosState extends State<Filtros> {
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -187,7 +197,7 @@ class _FiltrosState extends State<Filtros> {
                     child: Text("Classe", style: TextStyle(fontSize: 16)),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left:30),
+                    padding: const EdgeInsets.only(left: 30),
                     child: WrappedMultipleChipClasse(),
                   ),
                   SizedBox(height: 6),
@@ -198,7 +208,7 @@ class _FiltrosState extends State<Filtros> {
                     child: Text("Filo", style: TextStyle(fontSize: 16)),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left:30),
+                    padding: const EdgeInsets.only(left: 30),
                     child: WrappedMultipleChipFilo(),
                   ),
                   SizedBox(height: 6),
@@ -209,10 +219,9 @@ class _FiltrosState extends State<Filtros> {
                     child: Text("Intervalo de tempo", style: TextStyle(fontSize: 16)),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left:30),
+                    padding: const EdgeInsets.only(left: 30),
                     child: WrappedMultipleChipIntervalo(),
                   ),
-                  
                   SizedBox(height: 2),
                   Center(
                     child: TextButton(
@@ -244,6 +253,71 @@ class _FiltrosState extends State<Filtros> {
                     ),
                   )
                 ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class FAQ extends StatefulWidget {
+  const FAQ({Key? key}) : super(key: key);
+
+  @override
+  State<FAQ> createState() => _FAQState();
+}
+
+class _FAQState extends State<FAQ> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Hero(
+          tag: 'faq',
+          child: Material(
+            borderRadius: BorderRadius.circular(10),
+            child: SizedBox(
+              height: 350,
+              width: 350,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Perguntas mais frequentes",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Theme.of(context).primaryColor,
+                        )),
+                    SizedBox(height: 15),
+                    Text(
+                      '1. Como adicionar um dinossauro/fóssil à lista de favoritos?',
+                      style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      'Primeiro terá de aceder à página do dinossauro/fóssil que quer adicionar aos favoritos apartir do Mapa. Após aceder à página simplesmente clique na estrela para adicionar aos favoritos, caso a estrela esteja amarela então significa que o fossíl já está favoritado.',
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(0.6),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      '2. Como remover um dinossauro/fóssil da lista de favoritos?',
+                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      'Para remover um dinossauro/fóssil da sua lista de favoritos basta aceder à página do dinossauro/fóssil em questão e clicar na estrela amarela até esta ficar sem cor.',
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(0.6),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

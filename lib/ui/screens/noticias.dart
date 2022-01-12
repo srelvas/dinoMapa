@@ -1,5 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, avoid_print, unnecessary_this
 import 'package:dino_mapa/models/model_noticia.dart';
+import 'package:dino_mapa/ui/screens/WrappedMultipleChipClasse.dart';
+import 'package:dino_mapa/ui/screens/WrappedMultipleChipFilo.dart';
+import 'package:dino_mapa/ui/screens/WrappedMultipleChipIntervalo.dart';
+import 'package:dino_mapa/ui/screens/hero_dialog_route.dart';
 import 'package:dino_mapa/ui/screens/noticias_expanded.dart';
 import 'package:dino_mapa/ui/widgets/noticias_widget.dart';
 import 'package:dino_mapa/ui/widgets/search_noticias.dart';
@@ -155,17 +159,28 @@ O Dino Parque prepara-se para realizar visitas às áreas onde foram feitas dive
               style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
             ),
           ),
-          SizedBox(width: 22),
+          SizedBox(width: 10),
+          GestureDetector(
+              child: Hero(
+                tag: 'faq',
+                child: Icon(Icons.help, size: 32, color: Colors.white),
+              ),
+              onTap: () {
+                Navigator.of(context).push(HeroDialogRoute(builder: (context) {
+                  return FAQ();
+                }));
+              }),
+          SizedBox(width: 10),
         ],
       ),
       backgroundColor: Color(0xFFF2F3F8),
       body: Padding(
         padding: const EdgeInsets.only(left: 20, right: 20),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.end,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(top: 15, bottom: 5),
+              padding: const EdgeInsets.only(top: 15, bottom: 5, left: 15),
               child: SearchBarN(
                 onChanged: search,
                 text: query,
@@ -173,7 +188,7 @@ O Dino Parque prepara-se para realizar visitas às áreas onde foram feitas dive
               ),
             ),
             //SearchWidget(text: query, onChanged: search, hintText: 'Filtra por dinossauro ou por data'),
-            SizedBox(height: 3),
+            SizedBox(height: 5),
             Expanded(
               child: ListView.separated(
                 separatorBuilder: (BuildContext context, int index) => SizedBox(
@@ -223,5 +238,58 @@ O Dino Parque prepara-se para realizar visitas às áreas onde foram feitas dive
       this.query = query;
       this.noticias = l;
     });
+  }
+}
+
+class FAQ extends StatefulWidget {
+  const FAQ({Key? key}) : super(key: key);
+
+  @override
+  State<FAQ> createState() => _FAQState();
+}
+
+class _FAQState extends State<FAQ> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Hero(
+          tag: 'faq',
+          child: Material(
+            borderRadius: BorderRadius.circular(10),
+            child: SizedBox(
+              height: 140,
+              width: 350,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Perguntas mais frequentes",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Theme.of(context).primaryColor,
+                        )),
+                    SizedBox(height: 15),
+                    Text(
+                      '1. Como encontrar uma notícia específica?',
+                      style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      'No início da página tem uma barra de pesquisa, onde pode escrever uma parte do título ou a data da notícia que pretende ver.',
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(0.6),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }

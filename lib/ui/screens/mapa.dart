@@ -87,13 +87,24 @@ class _MapaState extends State<Mapa> {
         appBar: AppBar(
           actions: [
             Padding(
-              padding: EdgeInsets.only(top: 15, left: 220),
+              padding: EdgeInsets.only(top: 15, left: 100),
               child: Text(
                 "Dino Mapa",
                 style: TextStyle(letterSpacing: 1.0, color: Colors.white, fontSize: 23),
               ),
             ),
-            SizedBox(width: 22),
+            SizedBox(width: 10),
+            GestureDetector(
+                child: Hero(
+                  tag: 'faq',
+                  child: Icon(Icons.help, size: 32, color: Colors.white),
+                ),
+                onTap: () {
+                  Navigator.of(context).push(HeroDialogRoute(builder: (context) {
+                    return FAQ();
+                  }));
+                }),
+            SizedBox(width: 10),
           ],
           leading: IconButton(
             icon: Icon(IconData(58332, fontFamily: 'MaterialIcons')),
@@ -204,26 +215,29 @@ class _MapaState extends State<Mapa> {
                   ),
                 ),
               ),
-              Row(children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 37),
-                      child: Icon(
-                                      Icons.location_on,
-                                      color: Colors.red, size: 25,
-                                    ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 37),
+                    child: Icon(
+                      Icons.location_on,
+                      color: Colors.red,
+                      size: 25,
                     ),
-                    SizedBox(width:2),
-                    Text("Dinossauros"),
-                    SizedBox(width:50),
-                    Icon(
-                                    Icons.location_on,
-                                    color: Colors.blue, size: 25,
-                                  ),
-                    SizedBox(width:2),              
-                    Text("Outros fosseis"),
-
-                  ]),
-                  SizedBox(height:7)
+                  ),
+                  SizedBox(width: 2),
+                  Text("Dinossauros"),
+                  SizedBox(width: 50),
+                  Icon(
+                    Icons.location_on,
+                    color: Colors.blue,
+                    size: 25,
+                  ),
+                  SizedBox(width: 2),
+                  Text("Outros fosseis"),
+                ],
+              ),
+              SizedBox(height: 9),
             ],
           ),
         ),
@@ -247,7 +261,6 @@ class _MapaState extends State<Mapa> {
   }
 }
 
-
 class Filtros extends StatefulWidget {
   const Filtros({Key? key}) : super(key: key);
 
@@ -256,7 +269,6 @@ class Filtros extends StatefulWidget {
 }
 
 class _FiltrosState extends State<Filtros> {
-
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -294,7 +306,7 @@ class _FiltrosState extends State<Filtros> {
                     child: Text("Classe", style: TextStyle(fontSize: 16)),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left:30),
+                    padding: const EdgeInsets.only(left: 30),
                     child: WrappedMultipleChipClasse(),
                   ),
                   SizedBox(height: 6),
@@ -305,7 +317,7 @@ class _FiltrosState extends State<Filtros> {
                     child: Text("Filo", style: TextStyle(fontSize: 16)),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left:30),
+                    padding: const EdgeInsets.only(left: 30),
                     child: WrappedMultipleChipFilo(),
                   ),
                   SizedBox(height: 6),
@@ -316,10 +328,9 @@ class _FiltrosState extends State<Filtros> {
                     child: Text("Intervalo de tempo", style: TextStyle(fontSize: 16)),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left:30),
+                    padding: const EdgeInsets.only(left: 30),
                     child: WrappedMultipleChipIntervalo(),
                   ),
-                  
                   SizedBox(height: 2),
                   Center(
                     child: TextButton(
@@ -351,6 +362,83 @@ class _FiltrosState extends State<Filtros> {
                     ),
                   )
                 ],
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class FAQ extends StatefulWidget {
+  const FAQ({Key? key}) : super(key: key);
+
+  @override
+  State<FAQ> createState() => _FAQState();
+}
+
+class _FAQState extends State<FAQ> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.all(15.0),
+        child: Hero(
+          tag: 'faq',
+          child: Material(
+            borderRadius: BorderRadius.circular(10),
+            child: SizedBox(
+              height: 530,
+              width: 350,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Perguntas mais frequentes",
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Theme.of(context).primaryColor,
+                        )),
+                    SizedBox(height: 15),
+                    Text(
+                      '1. Como aceder à página de informação de um dinossauro/fóssil?',
+                      style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      'Quando quer ver um dinossauro/fóssil no mapa deve carregar duas vezes no icon de localização do fossil pretendido, onde o primeiro clique mostra o nome do fóssil (para ter a certeza que é o fossíl que pretende visualizar), e o segundo clique leva-o para a pagina do dinossauro em questão.',
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(0.6),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      '2. Como ver os dinossauros/fósseis apenas de certos períodos geológicos e/ou dentro de certas categorias taxonômicas?',
+                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      'No canto superior esquerdo existe um botão de filtragem. Ao carregar abrirá um pop-up onde pode selecionar os tempos geológicos dentro dos quais deseja encontrar fósseis, assim como as categorias taxonômicas que deseja ver.',
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(0.6),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                    Text(
+                      '3. Gostaria de pesquisar por um dinossauro/fóssil apartir do seu nome, como faço?',
+                      style: TextStyle(fontWeight: FontWeight.w400, fontSize: 16),
+                    ),
+                    SizedBox(height: 3),
+                    Text(
+                      'No canto superior esquerdo existe uma barra de pesquisa onde pode procurar pelo nome do fóssil.',
+                      style: TextStyle(
+                        color: Colors.black.withOpacity(0.6),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -11,11 +11,10 @@ class WrappedMultipleChipIntervalo extends StatefulWidget {
 class _WrappedMultipleChipIntervaloState extends State<WrappedMultipleChipIntervalo> {
   List<String> tags = [];
   List<String> options = [
-    'Kimmeridgian','Valanginian',
+    'Kimmeridgian',
+    'Valanginian',
     'Silurian',
     'Tithonian',
-    
-    
   ];
 
   @override

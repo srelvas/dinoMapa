@@ -10,14 +10,7 @@ class WrappedMultipleChipClasse extends StatefulWidget {
 
 class _WrappedMultipleChipClasseState extends State<WrappedMultipleChipClasse> {
   List<String> tags = [];
-  List<String> options = [
-    'Saurischia',
-    'Hexactinellida',
-    'Rhynchonellata',
-    'Ornithischia',
-    'Gastropoda',
-    'Sauropsida'
-  ];
+  List<String> options = ['Saurischia', 'Hexactinellida', 'Rhynchonellata', 'Ornithischia', 'Gastropoda', 'Sauropsida'];
 
   @override
   Widget build(BuildContext context) {

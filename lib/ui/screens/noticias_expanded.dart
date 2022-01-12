@@ -39,44 +39,46 @@ class _NoticiasExpandedState extends State<NoticiasExpanded> {
       body: Padding(
         padding: const EdgeInsets.only(left: 30, right: 30),
         child: ListView(
-            children: [
-              SizedBox(height: 8),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Text(widget.model.fonte, style: TextStyle(color: Colors.grey[700], fontSize: 10)),
-                ],
-              ),
-              SizedBox(height: 2),
-              Container(
-                  height: 170,
-                  decoration: BoxDecoration(
-                      boxShadow: kElevationToShadow[6],
-                      borderRadius: BorderRadius.circular(10),
-                      image: DecorationImage(fit: BoxFit.fill, image: AssetImage(widget.model.imagem),))),
-              SizedBox(height: 12),
-              Text(
-                widget.model.titulo,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
-              ),
-              SizedBox(height: 10),
-              Text(
-                widget.model.subtitulo,
-                textAlign: TextAlign.center,
-                style: TextStyle(color: Color(0xFF404040), fontSize: 13.7),
-              ),
-              SizedBox(height: 11),
-              Text(
-                widget.model.texto,
-                textAlign: TextAlign.left,
-                style: TextStyle(fontSize: 13),
-              ),
-              SizedBox(height: 11),
-            ],
-          ),
+          children: [
+            SizedBox(height: 8),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Text(widget.model.fonte, style: TextStyle(color: Colors.grey[700], fontSize: 10)),
+              ],
+            ),
+            SizedBox(height: 2),
+            Container(
+                height: 170,
+                decoration: BoxDecoration(
+                    boxShadow: kElevationToShadow[6],
+                    borderRadius: BorderRadius.circular(10),
+                    image: DecorationImage(
+                      fit: BoxFit.fill,
+                      image: AssetImage(widget.model.imagem),
+                    ))),
+            SizedBox(height: 12),
+            Text(
+              widget.model.titulo,
+              textAlign: TextAlign.center,
+              style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16),
+            ),
+            SizedBox(height: 10),
+            Text(
+              widget.model.subtitulo,
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Color(0xFF404040), fontSize: 13.7),
+            ),
+            SizedBox(height: 11),
+            Text(
+              widget.model.texto,
+              textAlign: TextAlign.left,
+              style: TextStyle(fontSize: 13),
+            ),
+            SizedBox(height: 11),
+          ],
         ),
-      
+      ),
     );
   }
 }

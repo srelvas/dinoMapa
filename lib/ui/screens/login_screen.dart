@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dino_mapa/models/user.dart';
 import 'package:dino_mapa/ui/screens/home.dart';
+import 'package:dino_mapa/ui/screens/onboarding.dart';
 import 'package:dino_mapa/ui/screens/registration_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -241,7 +242,7 @@ class _LoginScreenState extends State<LoginScreen> {
       await _auth.signInWithCredential(credential).then((value) => {
             postDetailsToFirestore(),
           });
-      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(_auth.currentUser!.email!)));
+      Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => OnBoardingPage(_auth.currentUser!.email!)));
     } else {
       return;
     }
@@ -252,7 +253,7 @@ class _LoginScreenState extends State<LoginScreen> {
       try {
         await _auth.signInWithEmailAndPassword(email: email, password: password).then((uid) => {
               Fluttertoast.showToast(msg: "Iniciou sessão com sucesso - email: " + email),
-              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => Home(email))),
+              Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) => OnBoardingPage(email))),
             });
       } on FirebaseAuthException catch (error) {
         switch (error.code) {

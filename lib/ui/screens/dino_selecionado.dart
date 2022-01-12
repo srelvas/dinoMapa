@@ -292,9 +292,9 @@ class _DinoSelecionadoState extends State<DinoSelecionado> with TickerProviderSt
                                               )
                                             ],
                                           ),
-                                          SizedBox(height:24),
+                                          SizedBox(height: 24),
                                           Center(
-                                            child: Container( 
+                                            child: Container(
                                               height: 350,
                                               width: 300,
                                               decoration: BoxDecoration(
