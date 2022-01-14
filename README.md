@@ -1,4 +1,4 @@
-# dino_mapa
+# Dino Mapa
 
 Dino Mapa is an application design to help users learn more about Portuguese paleontology.
 Here you can find all the information you need about fossils and dinosaurs, all the news you need to be updated about Portuguese paleontology and a Gallery to store your findings.
